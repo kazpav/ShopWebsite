@@ -18,6 +18,8 @@ public class CommodityForm {
 	private String name;
 
 	private String price;
+	
+	private String sellQuantity;
 
 	private String description;
 
@@ -101,6 +103,14 @@ public class CommodityForm {
 
 	public void setFabricator(Fabricator fabricator) {
 		this.fabricator = fabricator;
+	}
+
+	public String getSellQuantity() {
+		return sellQuantity;
+	}
+
+	public void setSellQuantity(String sellQuantity) {
+		this.sellQuantity = sellQuantity;
 	}
 	
 	

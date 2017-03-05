@@ -5,7 +5,7 @@
 
 
 <div class="row">
-	<div class="col-md-offset-3 col-md-4">
+	<div class="col-md-offset-2 col-md-5">
 		<form:form class="form-horizontal" action="/admin/commodityModer"
 			method="POST" modelAttribute="commodity">
 			<label for="name"><form:errors path="name"/></label><br>	
@@ -55,6 +55,7 @@
 					<th>Country</th>
 					<th>Fabricator</th>
 					<th>Description</th>
+					<th>SellQuantity</th>
 
 				</tr>
 			</thead>
@@ -97,7 +98,7 @@
 							</c:if>
 						</td>
 						<td>${commodity.description}</td>
-
+						<td>${commodity.sellQuantity}</td>
 
 					</tr>
 				</c:forEach>

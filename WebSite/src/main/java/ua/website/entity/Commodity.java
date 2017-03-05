@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -32,6 +33,9 @@ public class Commodity {
 	@Column(name="_description")
 	private String description;
 	
+	@Column(name="_sellQuantity")
+	private int sellQuantity;
+	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Country country;
@@ -48,6 +52,8 @@ public class Commodity {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Fabricator fabricator;
 	
+	@OneToMany(mappedBy="commodity", fetch=FetchType.LAZY)
+	private List<SellDate> sellDates;
 
 	
 
@@ -62,14 +68,22 @@ public class Commodity {
 	}
 
 
-	public Commodity(String name, BigDecimal price, String description) {
+	
+
+	
+	public Commodity(String name, BigDecimal price, String description,
+			int sellQuantity) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.description = description;
+		this.sellQuantity = sellQuantity;
 	}
 
-	
+
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -169,12 +183,36 @@ public class Commodity {
 	public void setFabricator(Fabricator fabricator) {
 		this.fabricator = fabricator;
 	}
+	
+
+	public int getSellQuantity() {
+		return sellQuantity;
+	}
+
+
+	public void setSellQuantity(int sellQuantity) {
+		this.sellQuantity = sellQuantity;
+	}
+
+
+	public List<SellDate> getSellDates() {
+		return sellDates;
+	}
+
+
+	public void setSellDates(List<SellDate> sellDates) {
+		this.sellDates = sellDates;
+	}
+
+
+	
 
 
 	@Override
 	public String toString() {
 		return "Commodity [id=" + id + ", name=" + name + ", price=" + price
-				+ ", description=" + description + "]";
+				+ ", description=" + description + ", sellQuantity="
+				+ sellQuantity + "]";
 	}
 
 
