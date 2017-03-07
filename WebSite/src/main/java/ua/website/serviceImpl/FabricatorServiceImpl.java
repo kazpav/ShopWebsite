@@ -3,9 +3,13 @@ package ua.website.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import ua.website.dao.FabricatorDao;
+import ua.website.dto.filter.SimpleFilter;
 import ua.website.entity.Fabricator;
 import ua.website.service.FabricatorService;
 
@@ -40,4 +44,17 @@ public class FabricatorServiceImpl implements FabricatorService {
 	public Fabricator findByName(String name) {
 		return fabricatorDao.findByName(name);
 	}
+
+	@Override
+	public Page<Fabricator> findAll(SimpleFilter filter, Pageable pageable) {
+		return fabricatorDao.findAll(findByNameLike(filter),pageable);
+	}
+
+	private Specification<Fabricator> findByNameLike(SimpleFilter filter) {
+		return (root,query,cb)->{
+			if(filter.getSearch().isEmpty())return null;
+			return cb.like(cb.lower(root.get("name")), filter.getSearch().toLowerCase()+"%");
+		};
+	}
+
 }

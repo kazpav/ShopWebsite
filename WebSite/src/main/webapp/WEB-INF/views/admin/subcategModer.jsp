@@ -4,18 +4,17 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
-
-
 <div class="row">
 	<div class="col-md-offset-3 col-md-4">
 		<form:form class="form-horizontal" action="/admin/subcategModer"
 			method="POST" modelAttribute="subcategory">
-			<label for="saveSubcategory"><form:errors path="name"/></label><br>									
-			<label for="saveSubcategory">Add subcategory(name)</label> 
+			<label for="saveSubcategory"><form:errors path="name" /></label>
+			<br>
+			<label for="saveSubcategory">Add subcategory(name)</label>
 			<form:input type="text" class="form-control" name="saveSubcategory"
-				path="name" id="saveSubcategory"/> 
+				path="name" id="saveSubcategory" />
 			<form:select path="category" class="form-control"
-				 items="${categories}" itemValue="id" itemLabel="name"/>
+				items="${categories}" itemValue="id" itemLabel="name" />
 			<button type="submit">Add</button>
 		</form:form>
 	</div>
@@ -44,11 +43,10 @@
 							</c:if>
 						</td>
 						<td><a class="btn btn-danger"
-							href="/admin/subcategModer/delete/${subcategory.id}">delete</a>
-						</td>
+							href="/admin/subcategModer/delete/${subcategory.id}">delete</a></td>
 						<td><a class="btn btn-warning"
 							href="/admin/subcategModer/update/${subcategory.id}">update</a></td>
-						
+
 					</tr>
 				</c:forEach>
 			</tbody>

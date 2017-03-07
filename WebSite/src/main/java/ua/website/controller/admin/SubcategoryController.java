@@ -3,6 +3,8 @@ package ua.website.controller.admin;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,14 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
-
-
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ua.website.dto.filter.SimpleFilter;
 import ua.website.editor.CategoryEditor;
 import ua.website.entity.Category;
 import ua.website.entity.Subcategory;
@@ -28,6 +26,8 @@ import ua.website.service.CategoryService;
 import ua.website.service.SubcategoryService;
 import ua.website.validator.SubcategoryValidator;
 
+
+import static ua.website.util.ParamBuilder.*;
 
 @Controller
 @RequestMapping("/admin/subcategModer")
@@ -51,6 +51,8 @@ public class SubcategoryController {
 	public Subcategory getForm(){
 		return new Subcategory();
 	}
+	
+	
 	
 	@GetMapping
 	public String show(Model model){

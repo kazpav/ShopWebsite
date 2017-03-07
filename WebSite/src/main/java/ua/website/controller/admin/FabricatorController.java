@@ -3,6 +3,8 @@ package ua.website.controller.admin;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,13 +15,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ua.website.dto.filter.SimpleFilter;
 import ua.website.entity.Fabricator;
 import ua.website.service.FabricatorService;
 import ua.website.validator.FabricatorValidator;
+
+import static ua.website.util.ParamBuilder.*;
+
 
 @Controller
 @RequestMapping("/admin/fabricatorModer")
@@ -38,36 +43,42 @@ public class FabricatorController {
 	public Fabricator getForm() {
 		return new Fabricator();
 	}
+	
+	@ModelAttribute("filter")
+	public SimpleFilter getFilter(){
+		return new SimpleFilter();
+	}
 
 	@GetMapping
-	public String show(Model model) {
-		model.addAttribute("fabricators", fabricatorService.findAll());
+	public String show(Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
+		model.addAttribute("page", fabricatorService.findAll(filter,pageable));
 		return "admin-fabricatorModer";
 	}
 
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable int id, Model model) {
+	public String update(@PathVariable int id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
 		model.addAttribute("fabricator", fabricatorService.findOne(id));
-		show(model);
+		show(model,pageable,filter);
 		return "admin-fabricatorModer";
 	}
 
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable int id) {
+	public String delete(@PathVariable int id, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
 		fabricatorService.delete(id);
-		return "redirect:/admin/fabricatorModer";
+		return "redirect:/admin/fabricatorModer"+getParams(pageable,filter);
 	}
 
 	@PostMapping
 	public String save(@ModelAttribute("fabricator")@Valid Fabricator fabricator,
-			BindingResult br,Model model, SessionStatus status) {
-		if(br.hasErrors()) return show(model);
+			BindingResult br,Model model, SessionStatus status,
+			@PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
+		if(br.hasErrors()) return show(model,pageable,filter);
 		
 		
 		fabricatorService.save(fabricator);
 		status.setComplete();
 
-		return "redirect:/admin/fabricatorModer";
+		return "redirect:/admin/fabricatorModer"+getParams(pageable, filter);
 	}
 
 }

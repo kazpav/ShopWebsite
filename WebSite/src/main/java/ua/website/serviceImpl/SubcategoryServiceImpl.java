@@ -3,10 +3,14 @@ package ua.website.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import ua.website.dao.CategoryDao;
 import ua.website.dao.SubcategoryDao;
+import ua.website.dto.filter.SimpleFilter;
 import ua.website.entity.Category;
 import ua.website.entity.Subcategory;
 import ua.website.service.SubcategoryService;
@@ -50,4 +54,15 @@ public class SubcategoryServiceImpl implements SubcategoryService{
 		return subcatDao.findByName(name);
 	}
 
+	@Override
+	public Page<Subcategory> findAll(SimpleFilter filter, Pageable pageable) {
+		return subcatDao.findAll(findByNameLike(filter),pageable);
+	}
+
+	private Specification<Subcategory> findByNameLike(SimpleFilter filter) {
+		return (root,query,cb)->{
+			if(filter.getSearch().isEmpty())return null;
+			return cb.like(cb.lower(root.get("name")), filter.getSearch().toLowerCase()+"%");
+		};
+	}
 }
