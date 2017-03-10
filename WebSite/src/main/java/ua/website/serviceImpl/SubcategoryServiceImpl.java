@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import ua.website.dao.CategoryDao;
 import ua.website.dao.SubcategoryDao;
 import ua.website.dto.filter.SimpleFilter;
+import ua.website.dto.filter.SubcategoryFilter;
 import ua.website.entity.Category;
 import ua.website.entity.Subcategory;
 import ua.website.service.SubcategoryService;
+import ua.website.specification.SubcategorySpecification;
 @Service
 public class SubcategoryServiceImpl implements SubcategoryService{
 
@@ -54,15 +56,20 @@ public class SubcategoryServiceImpl implements SubcategoryService{
 		return subcatDao.findByName(name);
 	}
 
-	@Override
-	public Page<Subcategory> findAll(SimpleFilter filter, Pageable pageable) {
-		return subcatDao.findAll(findByNameLike(filter),pageable);
-	}
+//	@Override
+//	public Page<Subcategory> findAll(SimpleFilter filter, Pageable pageable) {
+//		return subcatDao.findAll(findByNameLike(filter),pageable);
+//	}
 
-	private Specification<Subcategory> findByNameLike(SimpleFilter filter) {
-		return (root,query,cb)->{
-			if(filter.getSearch().isEmpty())return null;
-			return cb.like(cb.lower(root.get("name")), filter.getSearch().toLowerCase()+"%");
-		};
+//	private Specification<Subcategory> findByNameLike(SimpleFilter filter) {
+//		return (root,query,cb)->{
+//			if(filter.getSearch().isEmpty())return null;
+//			return cb.like(cb.lower(root.get("name")), filter.getSearch().toLowerCase()+"%");
+//		};
+//	}
+
+	@Override
+	public Page<Subcategory> findAll(Pageable pageable, SubcategoryFilter filter) {
+		return subcatDao.findAll(new SubcategorySpecification(filter), pageable);
 	}
 }

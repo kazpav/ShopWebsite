@@ -3,6 +3,8 @@ package ua.website.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -18,15 +20,7 @@ public interface SubcategoryDao extends JpaRepository<Subcategory, Integer>,JpaS
 	Subcategory findOne(int id);
 	Subcategory findByName(String name);
 	
-//	@Query("SELECT s  FROM Subcategory s WHERE s.category.id = ?1")
-	
-//	public void save(Subcategory subcategory);
-//
-//	public void delete(int id);
-//
-//	public Subcategory findOne(int id);
-//
-//	public List<Subcategory> findAll();
-//	
-//	void update(Subcategory subcategory);
+	@Query(value="SELECT s FROM Subcategory s LEFT JOIN FETCH s.category",
+			countQuery="SELECT count(s.id)FROM Subcategory s")
+	Page<Subcategory> findAll(Pageable pageable);
 }

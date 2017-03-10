@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import ua.website.dto.filter.SimpleFilter;
+import ua.website.dto.filter.SubcategoryFilter;
 import ua.website.entity.Category;
 import ua.website.entity.Subcategory;
 
@@ -18,6 +19,6 @@ public interface SubcategoryService {
 	void addCategoryToSubcategory(int subcatId, int catId);
 	Subcategory findByName(String name);
 	
-	Page<Subcategory> findAll(SimpleFilter filter,Pageable pageable);
+	Page<Subcategory> findAll(Pageable pageable,SubcategoryFilter filter);
 
 }
