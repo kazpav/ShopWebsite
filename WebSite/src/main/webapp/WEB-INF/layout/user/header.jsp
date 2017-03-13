@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="/resources/css/layouts.css">
+
 <header>
 	<div id="head">
 		<nav class="navbar navbar-default">
@@ -53,3 +55,25 @@
 		</nav>
 	</div>
 </header>
+<div class="containfer-fluid">
+			<div class="row" id="subheader">
+				<div class="col-md-4 col-md-offset-1" id="logo">
+					<a href=""><img src="images/logo.png"> <p id="nearlogo">Інтернет магазин туристичного спорядження.</p></a>
+				</div>
+				<div class="col-md-3 col-md-offset-1" id="search">
+					<form>
+						<div class="form-group">
+							<input class="form-control">
+						</div>
+					</form>
+				</div>
+				<div class="col-md-1" id="searchbutton">
+				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				</div>
+				<div class="col-md-2" id="socnetworks">
+					<a href="https://www.facebook.com" target="_blank"><img src="images/facebook.png"></a>
+					<a href="https://vk.com" target="_blank"><img src="images/vk.png"></a>
+					<a href="https://plus.google.com" target="_blank"><img src="images/google-plus.png"></a>
+				</div>
+			</div>
+		</div>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import ua.website.dao.CategoryDao;
 import ua.website.dao.ColorDao;
@@ -19,6 +20,8 @@ import ua.website.entity.Color;
 import ua.website.entity.Commodity;
 import ua.website.entity.Country;
 import ua.website.service.CommodityService;
+import ua.website.service.FileWriter;
+import ua.website.service.FileWriter.Folder;
 import ua.website.specification.CommoditySpecification;
 @Service
 public class CommodityServiceImpl implements CommodityService{
@@ -31,8 +34,12 @@ public class CommodityServiceImpl implements CommodityService{
 	private ColorDao colorDao;
 	@Autowired
 	private CategoryDao categDao;
+	@Autowired
+	private FileWriter fileWriter;
+	
 	@Override
 	public void save(CommodityForm form) {
+		//save and flush до ентити, мультипарт выт€гивать не надо
 		Commodity entity = new Commodity();
 		entity.setPrice(new BigDecimal(form.getPrice().replace(',', '.')));
 		entity.setCategory(form.getCategory());
@@ -43,7 +50,13 @@ public class CommodityServiceImpl implements CommodityService{
 		entity.setId(form.getId());
 		entity.setName(form.getName());
 		entity.setSubcategory(form.getSubcategory());
+		commDao.saveAndFlush(entity);
+		if(fileWriter.write(Folder.COMMODITY, form.getFile(), entity.getId())){
+//			if(entity.getVersion()==0)entity.setVersion(0);
+			entity.setVersion(form.getVersion()+1);
+		}
 		commDao.save(entity);
+		
 		
 	}
 	@Override

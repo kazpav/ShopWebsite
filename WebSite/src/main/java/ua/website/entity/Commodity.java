@@ -32,6 +32,9 @@ public class Commodity {
 	@Column(name="_description")
 	private String description;
 	
+	@Column(name="_version")
+	private int version;
+	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Country country;
@@ -87,6 +90,16 @@ public class Commodity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 

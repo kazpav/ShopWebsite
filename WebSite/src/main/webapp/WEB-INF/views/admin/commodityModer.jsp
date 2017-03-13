@@ -12,49 +12,6 @@
 
 <div class="row">
 	<div class="row">
-		<div class="col-md-offset-3 col-md-4">
-			<form:form class="form-horizontal" action="/admin/commodityModer"
-				method="POST" modelAttribute="commodity">
-				<label for="name"><form:errors path="name" /></label>
-				<br>
-				<label for="name">Name</label>
-				<form:input type="text" class="form-control" name="name" id="name"
-					path="name" />
-				<label for="price"><form:errors path="price" /></label>
-				<br>
-				<label for="price">Price</label>
-				<form:input type="text" class="form-control" name="price" id="price"
-					path="price" />
-				<label for="description"><form:errors path="description" /></label>
-				<br>
-				<label for="description">Description</label>
-				<form:input type="text" class="form-control" name="description"
-					id="description" path="description" />
-				<label for="subcategory">Subcategory</label>
-				<form:select class="form-control" name="subcategory"
-					path="subcategory" id="subcategory" items="${subcategories}"
-					itemValue="id" itemLabel="name" />
-				<label for="color">Color</label>
-				<form:select class="form-control" name="color" path="color"
-					id="color" items="${colors}" itemValue="id" itemLabel="name" />
-				<label for="country">Country</label>
-				<form:select class="form-control" name="country" path="country"
-					id="country" items="${countries}" itemValue="id" itemLabel="name" />
-				<label for="fabricator">Fabricator</label>
-				<form:select class="form-control" name="fabricator"
-					path="fabricator" id="fabricator" items="${fabricators}"
-					itemValue="id" itemLabel="name" />
-				<button type="submit">Add</button>
-			</form:form>
-		</div>
-	</div>
-
-
-
-
-
-
-	<div class="row">
 		<div class="col-md-2 col-xs-12">
 			<form:form class="form-horizontal filter"
 				action="/admin/commodityModer" method="GET" modelAttribute="filter">
@@ -63,7 +20,8 @@
 					 _countryId, _colorId, _subcategoryID, _categoryId, _fabricatorID" />
 				<div class="form-group">
 					<div class="col-sm-6">
-						<form:input path="nameSearch" class="form-control" placeholder="Name"/>
+						<form:input path="nameSearch" class="form-control"
+							placeholder="Name" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -112,64 +70,69 @@
 				<button type="submit" class="btn btn-primary">Ok</button>
 			</form:form>
 		</div>
-		<div class="col-md-8">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Delete</th>
-						<th>Update</th>
-						<th>Category</th>
-						<th>Subcategory</th>
-						<th>Color</th>
-						<th>Country</th>
-						<th>Fabricator</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${page.content}" var="commodity">
-						<tr>
-							<td>${commodity.id}</td>
-							<td>${commodity.name}</td>
-							<td>${commodity.price }</td>
-							<td><a class="btn btn-danger"
-								href="/admin/commodityModer/delete/${commodity.id}">delete</a></td>
-							<td><a class="btn btn-warning"
-								href="/admin/commodityModer/update/${commodity.id}">update</a></td>
-							<td>${commodity.category.name}<c:if
-									test="${empty commodity.category}">
-								Empty
-							</c:if>
-							</td>
-							<td>${commodity.subcategory.name}<c:if
-									test="${empty commodity.subcategory}">
-								Empty
-							</c:if>
-							</td>
-							<td>${commodity.color.name}<c:if test="${empty commodity.color}">
-								Empty
-							</c:if>
-							</td>
-							<td>${commodity.country.name}<c:if
-									test="${empty commodity.country}">
-								Empty
-							</c:if>
-							</td>
-							<td>${commodity.fabricator.name}<c:if
-									test="${empty commodity.fabricator}">
-								Empty
-							</c:if>
-							</td>
-							<td>${commodity.description}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+		
+		<div class="col-md-offset-1 col-md-4">
+			<form:form class="form-horizontal" action="/admin/commodityModer"
+				method="POST" modelAttribute="commodity" enctype="multipart/form-data">
+				<custom:hiddenInputs excludeParams="name, file, price, description, subcategory, category, color, country, fabricator"/>
+				
+				<div class="form-group">
+					<label for="name"><form:errors path="name" /></label>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="name">Name</label>
+					<form:input type="text" class="form-control" name="name" id="name"
+						path="name" />
+				</div>
+				<div class="form-group">
+					<label for="price"><form:errors path="price" /></label>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="price">Price</label>
+					<form:input type="text" class="form-control" name="price"
+						id="price" path="price" />
+				</div>
+				<div class="form-group">
+					<label for="description"><form:errors path="description" /></label>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<form:input type="text" class="form-control" name="description"
+						id="description" path="description" />
+				</div>
+				<div class="form-group">
+					<label for="subcategory">Subcategory</label>
+					<form:select class="form-control" name="subcategory"
+						path="subcategory" id="subcategory" items="${subcategories}"
+						itemValue="id" itemLabel="name" />
+				</div>
+				<div class="form-group">
+					<label for="color">Color</label>
+					<form:select class="form-control" name="color" path="color"
+						id="color" items="${colors}" itemValue="id" itemLabel="name" />
+				</div>
+				<div class="form-group">
+					<label for="country">Country</label>
+					<form:select class="form-control" name="country" path="country"
+						id="country" items="${countries}" itemValue="id" itemLabel="name" />
+				</div>
+				<div class="form-group">
+					<label for="fabricator">Fabricator</label>
+					<form:select class="form-control" name="fabricator"
+						path="fabricator" id="fabricator" items="${fabricators}"
+						itemValue="id" itemLabel="name" />
+				</div>
+				<input name="file" type="file" id="picture">
+
+				<button type="submit">Add</button>
+			</form:form>
 		</div>
-		<div class="col-md-2 col-xs-12">
+	</div>
+	<div class="row">
+	<div class="col-md-2 col-md-offset-10 col-xs-12">
 			<div class="row">
 				<div class="col-md-6 col-xs-6 text-center">
 					<div class="dropdown">
@@ -178,7 +141,7 @@
 							Sort <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
-							
+
 							<custom:sort innerHtml="Subcategory name asc"
 								paramValue="subcategory.name" />
 							<custom:sort innerHtml="Subcategory name desc"
@@ -200,6 +163,71 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-11 col-md-offset-1">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Delete</th>
+						<th>Update</th>
+						<th>Category</th>
+						<th>Subcategory</th>
+						<th>Color</th>
+						<th>Country</th>
+						<th>Fabricator</th>
+						<th>Description</th>
+						<th>Picture</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${page.content}" var="commodity">
+						<tr>
+							<td>${commodity.id}</td>
+							<td>${commodity.name}</td>
+							<td>${commodity.price }</td>
+							<td><a class="btn btn-danger"
+								href="/admin/commodityModer/delete/${commodity.id}<custom:allParams/>">delete</a></td>
+							<td><a class="btn btn-warning"
+								href="/admin/commodityModer/update/${commodity.id}<custom:allParams/>">update</a></td>
+							<td>${commodity.category.name}<c:if
+									test="${empty commodity.category}">
+								Empty
+							</c:if>
+							</td>
+							<td>${commodity.subcategory.name}<c:if
+									test="${empty commodity.subcategory}">
+								Empty
+							</c:if>
+							</td>
+							<td>${commodity.color.name}<c:if
+									test="${empty commodity.color}">
+								Empty
+							</c:if>
+							</td>
+							<td>${commodity.country.name}<c:if
+									test="${empty commodity.country}">
+								Empty
+							</c:if>
+							</td>
+							<td>${commodity.fabricator.name}<c:if
+									test="${empty commodity.fabricator}">
+								Empty
+							</c:if>
+							</td>
+							<td>${commodity.description}</td>
+							<td><img
+								src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}" height="200" width="200"></td>
+						</tr>
+					</c:forEach>
+					
+				</tbody>
+			</table>
+		</div>
+		
 	</div>
 </div>
 <div class="row">

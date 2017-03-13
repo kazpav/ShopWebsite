@@ -15,7 +15,6 @@
 			<div class="col-md-2 col-md-offset-1">
 				<img src="images/location.png"> <b>Адреса</b> <br> м.
 				Львів, вул Городоцька
-				class="navbar navbar-default navbar-fixed-bottom"
 			</div>
 		</div>
 	</div>

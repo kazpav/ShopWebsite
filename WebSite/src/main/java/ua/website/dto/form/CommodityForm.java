@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import ua.website.entity.Category;
 import ua.website.entity.Color;
 import ua.website.entity.Country;
@@ -20,6 +22,10 @@ public class CommodityForm {
 	private String price;
 
 	private String description;
+	
+	private int version;
+	
+	private MultipartFile file;
 
 	private Country country;
 
@@ -101,6 +107,22 @@ public class CommodityForm {
 
 	public void setFabricator(Fabricator fabricator) {
 		this.fabricator = fabricator;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	
 	
