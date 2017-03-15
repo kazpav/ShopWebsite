@@ -39,7 +39,7 @@ public class CommodityServiceImpl implements CommodityService{
 	
 	@Override
 	public void save(CommodityForm form) {
-		//save and flush до ентити, мультипарт выт€гивать не надо
+		
 		Commodity entity = new Commodity();
 		entity.setPrice(new BigDecimal(form.getPrice().replace(',', '.')));
 		entity.setCategory(form.getCategory());
@@ -52,10 +52,9 @@ public class CommodityServiceImpl implements CommodityService{
 		entity.setSubcategory(form.getSubcategory());
 		commDao.saveAndFlush(entity);
 		if(fileWriter.write(Folder.COMMODITY, form.getFile(), entity.getId())){
-//			if(entity.getVersion()==0)entity.setVersion(0);
 			entity.setVersion(form.getVersion()+1);
+			commDao.save(entity);
 		}
-		commDao.save(entity);
 		
 		
 	}

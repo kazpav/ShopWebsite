@@ -18,6 +18,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
 //	void update(User user);
 	
 	User findByName(String name);
+	User findByEmail(String email);
 //	public void addCommodityToUser(int UserId, int CommodId);
 	
 //	@Query("select u from User u left join fetch u.commodity where u.name=:param")

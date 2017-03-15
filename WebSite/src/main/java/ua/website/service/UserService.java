@@ -14,6 +14,7 @@ public interface UserService {
 //	void AddCountryToUser(int idUser, int idCountry);
 //	void AddCityToUser(int idUser, int idCity);
 	User findByName(String name);
+	User findByEmail(String email);
 //	User fetchUserWithCommod(String name);
 //	public void addCommodityToUser(int UserId, int CommodId);
 }

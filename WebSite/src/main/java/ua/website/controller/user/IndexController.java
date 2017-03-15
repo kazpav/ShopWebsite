@@ -42,6 +42,7 @@ public class IndexController {
 	public String category(@PathVariable int id, Model model){
 		model.addAttribute("category", categoryService.findOne(id));
 		model.addAttribute("commodities", commodityService.findByCategoryId(id));
+		model.addAttribute("categories", categoryService.findAll());
 		return "user-category";
 	}
 //	@RequestMapping(value="/registration", method=RequestMethod.POST)

@@ -10,6 +10,7 @@ import ua.website.dao.CountryDao;
 import ua.website.dao.UserDao;
 import ua.website.entity.Commodity;
 import ua.website.entity.Country;
+import ua.website.entity.Role;
 import ua.website.entity.User;
 import ua.website.service.UserService;
 @Service
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService{
 	private CommodityDao commDao;
 	
 	public void save(User user) {
-		user.getName().toUpperCase();
+		user.setRole(Role.ROLE_USER);
 		userDao.save(user);
 	}
 
@@ -55,6 +56,11 @@ public class UserServiceImpl implements UserService{
 
 	public User findByName(String name) {
 		return userDao.findByName(name);
+	}
+
+	@Override
+	public User findByEmail(String email) {
+		return userDao.findByEmail(email);
 	}
 	
 //	public void addCommodityToUser(int UserId, int CommodId){

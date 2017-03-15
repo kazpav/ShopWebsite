@@ -16,11 +16,11 @@ public class ColorValidator implements Validator{
 	public ColorValidator(ColorService colorService) {
 		this.colorService = colorService;
 	}
-
+	@Override
 	public boolean supports(Class<?> clazz) {
 		return Color.class.equals(clazz);
 	}
-
+	@Override
 	public void validate(Object target, Errors errors) {
 		Color color = (Color) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "can't be empty");

@@ -1,78 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div class="row">
-	<div class="col-md-5 col-md-offset-2">
-		<form class="form-horizontal" action="/registration", method="POST"">
-			<div class="form-group">
-				<label class="control-label col-md-2" for="name">Ім'я</label>
-				<div class="col-md-10">
-					<input id="name" class="form-control" name="name">
-				</div>
+	<div class="col-sm-12 col-xs-12">
+		<form:form class="form-horizontal" action="/registration" method="POST" modelAttribute="user">
+  			<div class="form-group">
+				<label for="name" class="col-sm-offset-2 col-sm-10"><form:errors path="name"/></label>
+			</div>
+  			<div class="form-group">
+    			<label for="name" class="col-sm-2 control-label">Name</label>
+    			<div class="col-sm-10">
+      				<form:input class="form-control" path="name" id="name"/>
+    			</div>
+  			</div>
+  			<div class="form-group">
+				<label for="email" class="col-sm-offset-2 col-sm-10"><form:errors path="email"/></label>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-2" for="country">Країна</label>
-				<div class="col-md-10">
-					<input id="country" class="form-control" name="country">
-				</div>
+    			<label for="email" class="col-sm-2 control-label">Email</label>
+    			<div class="col-sm-10">
+      				<form:input class="form-control" path="email" id="email"/>
+    			</div>
+  			</div>
+  			<div class="form-group">
+				<label for="email" class="col-sm-offset-2 col-sm-10"><form:errors path="password"/></label>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-2" for="email">Ел. пошта</label>
-				<div class="col-md-10">
-					<input id="email" class="form-control" name="email">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2" for="pass">Пароль</label>
-				<div class="col-md-10">
-					<input id="pass" class="form-control" type="password" name="password">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2" for="city">Місто</label>
-				<div class="col-md-10">
-					<input id="city" class="form-control" name="city">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2" for="country">Ваша
-					область</label>
-				<div class="col-md-10">
-					<select id="country" class="form-control">
-						<option>Київська</option>
-						<option>Львівська</option>
-						<option>Одеська</option>
-						<option>Дніпропетровська</option>
-						<option>Харківська</option>
-						<option>Житомирська</option>
-					</select>
-					<p class="help-block">Оберіть вашу область</p>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-10 col-md-offset-2">
-					<div class="checkbox">
-						<label> <input type="checkbox"> Я погоджуюсь з
-							правилами використання ресурсу
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-10 col-md-offset-2">
-					<button type="submit" class="btn btn-primary">Реєстрація</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	<div class="col-md-2 col-md-offset-2" id="rightcol">
-		<div class="row">
-			<div class="col-md-12">
-				<a href=""><img src="images/ad.jpg" width="300" height="auto"></a>
-			</div>
-		</div>
+    			<label for="password" class="col-sm-2 control-label">Password</label>
+    			<div class="col-sm-10">
+      				<form:password class="form-control" path="password" id="password"/>
+    			</div>
+  			</div>
+  			<div class="form-group">
+    			<div class="col-sm-offset-2 col-sm-10">
+      				<button type="submit" class="btn btn-default">Register</button>
+    			</div>
+  			</div>
+		</form:form>
 	</div>
 </div>
