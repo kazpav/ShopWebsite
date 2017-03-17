@@ -1,5 +1,7 @@
 package ua.website.controller.user;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,10 @@ public class IndexController {
 	
 	
 	@RequestMapping("/")
-	public String index(Model model){
+	public String index(Model model, Principal principal){
+		if(principal!=null){
+			System.out.println(principal.getName());
+		}
 		model.addAttribute("categories", categoryService.findAll());
 		return "user-index";
 	}

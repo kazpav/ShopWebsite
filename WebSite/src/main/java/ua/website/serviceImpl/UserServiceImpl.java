@@ -2,19 +2,23 @@ package ua.website.serviceImpl;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ua.website.dao.CommodityDao;
 import ua.website.dao.CountryDao;
 import ua.website.dao.UserDao;
-import ua.website.entity.Commodity;
-import ua.website.entity.Country;
 import ua.website.entity.Role;
 import ua.website.entity.User;
 import ua.website.service.UserService;
-@Service
-public class UserServiceImpl implements UserService{
+@Service("userDetailsService")
+public class UserServiceImpl implements UserService, UserDetailsService{
 
 	@Autowired
 	private UserDao userDao;
@@ -23,8 +27,11 @@ public class UserServiceImpl implements UserService{
 	private CountryDao countryDao;
 	@Autowired
 	private CommodityDao commDao;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	public void save(User user) {
+		user.setPassword(encoder.encode(user.getPassword()));
 		user.setRole(Role.ROLE_USER);
 		userDao.save(user);
 	}
@@ -61,6 +68,24 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findByEmail(String email) {
 		return userDao.findByEmail(email);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String useremail)
+			throws UsernameNotFoundException {
+		return userDao.findByEmail(useremail);
+	}
+	
+	@PostConstruct
+	public void addAdmin(){
+		User user = userDao.findByEmail("admin");
+		if(user==null){
+			user = new User();
+			user.setPassword(encoder.encode("admin"));
+			user.setEmail("admin");
+			user.setRole(Role.ROLE_ADMIN);
+			userDao.save(user);
+		}
 	}
 	
 //	public void addCommodityToUser(int UserId, int CommodId){

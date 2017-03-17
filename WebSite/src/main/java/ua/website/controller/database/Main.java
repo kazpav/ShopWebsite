@@ -1,4 +1,4 @@
-package ua.website.controller.database;
+/*package ua.website.controller.database;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,3 +31,4 @@ public class Main {
 	}
 
 }
+*/

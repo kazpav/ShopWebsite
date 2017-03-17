@@ -42,6 +42,7 @@ public class User implements UserDetails {
 	private String password;
 	
 	@Enumerated
+	@Column(name="_role")
 	private Role role;
 	
 	@ManyToMany

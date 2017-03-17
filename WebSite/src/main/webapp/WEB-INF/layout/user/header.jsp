@@ -9,7 +9,7 @@
 				<div class="containfer-fluid">
 					<div class="collapse navbar-collapse" id="one">
 						<ul class="nav navbar-nav">
-							<li><a href=""><img src="/images/layouts/truck.png">Оплата
+							<li><a href=""><img src="/images/layouts/truck.png">aОплата
 									та доставка</a></li>
 							<li><a href=""><img src="/images/layouts/email.png">
 									Контакти</a></li>
@@ -78,6 +78,8 @@
 					<button type="submit" class="btn btn-primary">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					</button>
+					<br>
+					<a href="">Advanced search</a>
 				</div>
 				<div class="col-md-2" id="socnetworks">
 					<a href="https://www.facebook.com" target="_blank"><img
