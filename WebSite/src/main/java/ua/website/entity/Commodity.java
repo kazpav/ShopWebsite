@@ -54,11 +54,11 @@ public class Commodity {
 
 	
 
-	@ManyToMany
-	@JoinTable(name="commodity_user",
-	joinColumns=@JoinColumn(name="id_commodity"),
-	inverseJoinColumns=@JoinColumn(name="id_user"))
-	private List<User> users;
+//	@ManyToMany
+//	@JoinTable(name="commodity_user",
+//	joinColumns=@JoinColumn(name="id_commodity"),
+//	inverseJoinColumns=@JoinColumn(name="id_user"))
+//	private List<User> users;
 	
 	
 	public Commodity() {
@@ -163,14 +163,14 @@ public class Commodity {
 	}
 
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+//	public List<User> getUsers() {
+//		return users;
+//	}
+//
+//
+//	public void setUsers(List<User> users) {
+//		this.users = users;
+//	}
 	
 
 

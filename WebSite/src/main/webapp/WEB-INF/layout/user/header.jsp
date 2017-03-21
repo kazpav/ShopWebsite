@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+
 <link rel="stylesheet" href="/resources/css/layouts.css">
+
 
 <header>
 	<div id="head" class="row">
@@ -19,38 +24,77 @@
 									0 800 000 000</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown"><a href="" role="button"
-								class="dropdown-toggle" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false"> Увійти <span
-									class="caret"></span>
-							</a>
-								<ul class="dropdown-menu">
-									<li>
-										<form class="form-horizontal">
-											<div class="form-group">
-												<label class="control-label col-md-4" for="email">Email</label>
-												<div class="col-md-8">
-													<input id="email" class="form-control">
+							<sec:authorize access="isAuthenticated()">
+								<li><a>${user.name}</a></li>
+							</sec:authorize>
+							<sec:authorize access="!isAuthenticated()">
+								<li class="dropdown"><a href="" role="button"
+									class="dropdown-toggle" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">Sing in<span
+										class="caret"></span>
+								</a>
+									<ul class="dropdown-menu">
+										<form:form class="form-horizontal" action="/login"
+											method="POST">
+											<li>
+												<div class="form-group">
+													<label class="control-label col-md-4" for="login">Email</label>
+													<div class="col-md-8">
+														<input id="login" name="login" class="form-control">
+													</div>
 												</div>
-											</div>
-											<div class="form-group">
-												<label class="control-label col-md-4" for="pass">Пароль</label>
-												<div class="col-md-8">
-													<input id="pass" class="form-control" type="password">
+											</li>
+											<li>
+												<div class="form-group">
+													<label class="control-label col-md-4" for="password">Password</label>
+													<div class="col-md-8">
+														<input id="password" name="password" class="form-control"
+															type="password">
+													</div>
 												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-md-3 col-md-offset-4">
-													<button type="submit" class="btn btn-primary">Вхід</button>
+											</li>
+											<li>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<div class="checkbox">
+															<label> <input name="remember-me" type="checkbox">
+																Remember me
+															</label>
+														</div>
+													</div>
 												</div>
-											</div>
-										</form>
-									</li>
-								</ul></li>
-							<li><a href="/registration" target="_blank"><img
-									src="/images/layouts/register.png"> Реєстрація</a></li>
-							<li><a href="basketnoauth.html"><img
-									src="/images/layouts/basket.png"> Корзина</a></li>
+											</li>
+											<li>
+												<div class="form-group">
+													<div class="col-md-3 col-md-offset-4">
+														<button type="submit" class="btn btn-default">Sing
+															in</button>
+													</div>
+												</div>
+											</li>
+										</form:form>
+
+									</ul></li>
+							</sec:authorize>
+							<sec:authorize access="!isAuthenticated()">
+								<li><a href="/registration" target="_blank"><img
+										src="/images/layouts/register.png">Registration</a></li>
+							</sec:authorize>
+							<sec:authorize access="isAuthenticated()">
+								<li id="logout"><form:form action="/logout" method="POST">
+										<img src="/images/layouts/exit.png">
+
+										<button type="submit">Logout</button>
+									</form:form></li>
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<li><a href="/admin"><img
+											src="/images/layouts/admin.png"> Moderating</a></li>
+								</sec:authorize>
+
+								<li><a href="/basket"><img
+										src="/images/layouts/basket.png">Basket</a></li>
+							</sec:authorize>
+
 						</ul>
 					</div>
 
@@ -78,8 +122,7 @@
 					<button type="submit" class="btn btn-primary">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					</button>
-					<br>
-					<a href="">Advanced search</a>
+					<br> <a href="">Advanced search</a>
 				</div>
 				<div class="col-md-2" id="socnetworks">
 					<a href="https://www.facebook.com" target="_blank"><img

@@ -35,21 +35,15 @@ public class IndexController {
 	
 	
 	@RequestMapping("/")
-	public String index(Model model, Principal principal){
-		if(principal!=null){
-			System.out.println(principal.getName());
-		}
+	public String index(Model model/*, Principal principal*/){
+//		if(principal!=null){
+//			System.out.println(principal.getName());
+//		}
 		model.addAttribute("categories", categoryService.findAll());
 		return "user-index";
 	}
 	
-	@RequestMapping("/category/{id}")
-	public String category(@PathVariable int id, Model model){
-		model.addAttribute("category", categoryService.findOne(id));
-		model.addAttribute("commodities", commodityService.findByCategoryId(id));
-		model.addAttribute("categories", categoryService.findAll());
-		return "user-category";
-	}
+	
 //	@RequestMapping(value="/registration", method=RequestMethod.POST)
 //	public String registration(@RequestParam String name, @RequestParam String country,
 //			@RequestParam String email, @RequestParam String password){

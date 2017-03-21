@@ -45,14 +45,11 @@ public class User implements UserDetails {
 	@Column(name="_role")
 	private Role role;
 	
-	@ManyToMany
-	@JoinTable(name="commodity_user",
-	joinColumns=@JoinColumn(name="id_user"),
-	inverseJoinColumns=@JoinColumn(name="id_commodity"))
-	private List<Commodity> commodities;
-	
-	
-	
+//	@ManyToMany
+//	@JoinTable(name="commodity_user",
+//	joinColumns=@JoinColumn(name="id_user"),
+//	inverseJoinColumns=@JoinColumn(name="id_commodity"))
+//	private List<Commodity> commodities;
 
 	
 	public User() {
@@ -117,15 +114,15 @@ public class User implements UserDetails {
 
 
 
-	public List<Commodity> getCommodities() {
-		return commodities;
-	}
-
-
-
-	public void setCommodities(List<Commodity> commodities) {
-		this.commodities = commodities;
-	}
+//	public List<Commodity> getCommodities() {
+//		return commodities;
+//	}
+//
+//
+//
+//	public void setCommodities(List<Commodity> commodities) {
+//		this.commodities = commodities;
+//	}
 
 
 

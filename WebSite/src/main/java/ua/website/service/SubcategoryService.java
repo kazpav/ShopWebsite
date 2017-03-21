@@ -20,5 +20,7 @@ public interface SubcategoryService {
 	Subcategory findByName(String name);
 	
 	Page<Subcategory> findAll(Pageable pageable,SubcategoryFilter filter);
+	
+	
 
 }

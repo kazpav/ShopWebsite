@@ -13,7 +13,9 @@ import ua.website.entity.Commodity;
 
 public interface CommodityDao extends JpaRepository<Commodity, Integer>, JpaSpecificationExecutor<Commodity> {
 	
-	@Query("SELECT c FROM Commodity c WHERE c.category.id = ?1")
+	@Query("SELECT c FROM Commodity c LEFT JOIN FETCH c.color LEFT JOIN FETCH c.country"
+			+ " LEFT JOIN FETCH c.fabricator LEFT JOIN FETCH c.subcategory LEFT JOIN FETCH c.category"
+			+" WHERE c.category.id = ?1")
 	List<Commodity> findByCategoryId(int id);
 	
 	@Query("SELECT c FROM Commodity c LEFT JOIN FETCH c.color LEFT JOIN FETCH c.country"

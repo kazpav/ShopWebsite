@@ -83,6 +83,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 			user = new User();
 			user.setPassword(encoder.encode("admin"));
 			user.setEmail("admin");
+			user.setName("admin");
 			user.setRole(Role.ROLE_ADMIN);
 			userDao.save(user);
 		}

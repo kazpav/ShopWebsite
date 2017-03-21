@@ -50,7 +50,7 @@ public class CommodityServiceImpl implements CommodityService{
 		entity.setId(form.getId());
 		entity.setName(form.getName());
 		entity.setSubcategory(form.getSubcategory());
-		commDao.saveAndFlush(entity);
+		entity = commDao.saveAndFlush(entity);
 		if(fileWriter.write(Folder.COMMODITY, form.getFile(), entity.getId())){
 			entity.setVersion(form.getVersion()+1);
 			commDao.save(entity);
@@ -112,6 +112,7 @@ public class CommodityServiceImpl implements CommodityService{
 		form.setId(entity.getId());
 		form.setName(entity.getName());
 		form.setSubcategory(entity.getSubcategory());
+		form.setVersion(entity.getVersion());
 		return form;
 	}
 	@Override
