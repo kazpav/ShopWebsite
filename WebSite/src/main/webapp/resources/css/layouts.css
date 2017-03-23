@@ -1,0 +1,66 @@
+#head a:hover{
+	background-color:silver;
+}
+
+#head{
+	padding: 0px;
+	margin-left:15px;
+	
+}
+
+#one{
+    box-shadow: 10px 10px 5px #888888;
+	}
+#logout{
+	padding-bottom: 10px;
+	padding-top: 15px;
+	padding-right: 2px;
+}
+#logout hover{
+	background-color:silver;
+}
+
+#subheader{
+	border-bottom:1px solid silver;
+}
+#adminSubheader{
+	border-bottom: 1px solid silver;
+	
+}
+#adminSubheader li{
+	margin: auto;
+}
+#adminSubheader li:hover{
+	background-color: silver;
+}
+#footer{
+	border-top: 1px solid silver;
+}
+.dropdown-menu {
+    width: 300px !important;
+    height: 150px !important;
+}
+
+#logo img{
+	float:left;
+}
+#logo a:hover{
+	text-decoration:none;
+	color:black;
+}
+#nearlogo {
+	font-size: 1.7em;
+	font-family: Comic Sans MS, sans-serif;
+	color: silver;
+	
+}
+#search {
+	
+	margin-top:10px;
+}
+#searchbutton{
+	margin-top:10px;
+}
+#socnetworks{
+	margin-top:10px;
+}

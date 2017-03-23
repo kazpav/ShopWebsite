@@ -111,19 +111,23 @@
 					<a href="/"><img src="/images/layouts/logo.png">
 						<p id="nearlogo">Інтернет магазин туристичного спорядження.</p></a>
 				</div>
+
 				<div class="col-md-3 col-md-offset-1" id="search">
-					<form>
-						<div class="form-group">
-							<input class="form-control">
-						</div>
-					</form>
+					<div class="form-group">
+						<input class="form-control"
+							placeholder="Name" />
+						<p>
+							<a href="/search">Advanced search</a>
+						</p>
+
+					</div>
 				</div>
 				<div class="col-md-1" id="searchbutton">
 					<button type="submit" class="btn btn-primary">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					</button>
-					<br> <a href="">Advanced search</a>
 				</div>
+	
 				<div class="col-md-2" id="socnetworks">
 					<a href="https://www.facebook.com" target="_blank"><img
 						src="/images/layouts/facebook.png"></a> <a href="https://vk.com"
