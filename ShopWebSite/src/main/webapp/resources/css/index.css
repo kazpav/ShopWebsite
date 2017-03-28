@@ -1,0 +1,90 @@
+#main{
+	margin-top:20px;
+}
+#map{
+	margin-top:50px;
+}
+.sliderA {
+        width: 400px;
+        height: 250px;
+        border: 1px solid white;
+        position: relative;
+        text-align: center;
+}
+ .sliderA > input + label {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 8px;
+        background: rgba(90, 90, 90, 0.8);
+        border: 2px solid rgba(190, 190, 190, 0.8);
+
+        cursor: pointer;
+
+        z-index: 100;
+        position: relative;
+
+        margin-right: 4px;
+        top: 90%;
+
+        transition: background 0.8s ease-out 0s;
+}
+
+.sliderA > input + label:hover {
+	background: rgba(250, 250, 250, 0.8);
+}
+
+.sliderA > input:checked + label {
+	background: rgba(220, 220, 220, 0.8);
+}
+.sliderA > div {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 0;
+}
+.sliderA > div {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.8s ease-out 0.1s, visibility 0.1s ease-out 0.9s;
+}
+
+.sliderA > input:checked + label + div {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.8s ease-out 0.1s, visibility 0.1s ease-out 0s;
+}
+.sliderA > div > p {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	text-align: right;
+	color: #black;
+	font-size:1.3em;
+	text-shadow: 1px 1px 2px #000;
+}
+.sliderA > div > img{
+	float:left;
+}
+#topsalemark{
+	margin-top:20px;
+	border-top:1px solid silver;
+	border-bottom:1px solid silver;
+	font-size:2em;
+	font-family:Comic Sans MS, sans-serif;
+	color:silver;
+}
+#topsales{
+	margin-top:20px;
+	margin-bottom:30px;
+}
+#topsales div{
+	border:1px solid silver;
+	font-family:calibri;
+}
+#topsales div img{
+	float:left;
+}
