@@ -109,18 +109,21 @@
 			<div class="row" id="subheader">
 				<div class="col-md-4 col-md-offset-1" id="logo">
 					<a href="/"><img src="/images/layouts/logo.png">
-						<p id="nearlogo">Інтернет магазин туристичного спорядження.</p></a>
+						<p id="nearlogo">Camping equipment</p></a>
 				</div>
 
 				<div class="col-md-3 col-md-offset-1" id="search">
+				<form:form class="form-horizontal filter" action="/search"
+							method="GET" modelAttribute="filter">
 					<div class="form-group">
-						<input class="form-control"
+						<form:input class="form-control" path="nameSearch"
 							placeholder="Name" />
 						<p>
 							<a href="/search">Advanced search</a>
 						</p>
 
 					</div>
+				</form:form>
 				</div>
 				<div class="col-md-1" id="searchbutton">
 					<button type="submit" class="btn btn-primary">

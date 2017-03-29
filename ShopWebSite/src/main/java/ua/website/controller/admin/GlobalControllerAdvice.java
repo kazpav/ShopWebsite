@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import ua.website.dto.filter.CommodityFilter;
 import ua.website.entity.User;
 import ua.website.service.UserService;
 
@@ -22,6 +23,11 @@ public class GlobalControllerAdvice {
 			model.addAttribute("user",
 					userService.findByEmail(principal.getName()));
 		}
+	}
+	
+	@ModelAttribute("filter")
+	public CommodityFilter getFilter(){
+		return new CommodityFilter();
 	}
 
 }
