@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ua.website.entity.User;
+import ua.website.service.MailSendingService;
 import ua.website.service.UserService;
 import ua.website.validator.UserValidator;
 
@@ -31,6 +32,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired 
+	private MailSendingService mailSendingService;
 
 	@InitBinder("user")
 	protected void bind(WebDataBinder binder) {
@@ -49,7 +52,7 @@ public class UserController {
 		if (br.hasErrors())
 			return "user-registration";
 		userService.save(user);
-		sendMail("Welcome to our shop", user.getEmail(), "Thanks for choosing our shop for buying equipment");
+		mailSendingService.sendMail("Welcome to our shop", user.getEmail(), "Thanks for choosing our shop for buying equipment");
 		return "redirect:/login";
 	}
 
@@ -58,32 +61,5 @@ public class UserController {
 		return "user-login";
 	}
 
-	public void sendMail(String content, String email, String mailBody) {
-		Properties properties = System.getProperties();
 
-		properties.setProperty("mail.smtp.starttls.enable", "true");
-		properties.setProperty("mail.smtp.auth", "true");
-		properties.setProperty("mail.smtp.port", "465");
-		properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-		properties.setProperty("mail.smtp.socketFactory.port", "465");
-		properties.setProperty("mail.smtp.socketFactory.class",
-				"javax.net.ssl.SSLSocketFactory");
-		Session session = Session.getDefaultInstance(properties,
-				new Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("equipmentforcamp@gmail.com", "1234qwerty");
-					}
-				});
-		try {
-			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("1234qwerty"));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(
-					email));
-			message.setSubject(content, "UTF-8");
-			message.setText(mailBody);
-			Transport.send(message);
-		} catch (MessagingException å) {
-			å.printStackTrace();
-		}
-	}
 }
