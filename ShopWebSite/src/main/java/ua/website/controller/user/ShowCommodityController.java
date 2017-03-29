@@ -73,6 +73,7 @@ public class ShowCommodityController {
 		if (principal != null) {
 
 			if(br.hasErrors()) return show(id,model);
+			Commodity comm = userCommodity.getCommodity();
 			if(userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId())!=null){
 				UserCommodity uc = userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId());
 				uc.setNumber(uc.getNumber()+Integer.parseInt(userCommodity.getNumber()));
@@ -81,13 +82,16 @@ public class ShowCommodityController {
 				System.out.println(Integer.parseInt(userCommodity.getNumber()));
 				userCommodityService.save(uc);
 				
+				
 			}else{
 				userCommodityService.saveForm(userCommodity);
 			}
 //			commodity.setQuantity(commodity.getQuantity()-Integer.parseInt(userCommodity.getNumber()));
+			comm.setQuantity(comm.getQuantity()-Integer.parseInt(userCommodity.getNumber()));
+			commodityService.save(comm);
 			
 		}
-
+		
 		return "redirect:/commodity/{id}";
 	}
 }
