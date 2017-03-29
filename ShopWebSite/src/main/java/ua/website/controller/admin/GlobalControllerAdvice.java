@@ -25,7 +25,7 @@ public class GlobalControllerAdvice {
 		}
 	}
 	
-	@ModelAttribute("filter")
+	@ModelAttribute("searchFilter")
 	public CommodityFilter getFilter(){
 		return new CommodityFilter();
 	}

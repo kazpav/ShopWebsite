@@ -47,7 +47,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<form:form class="form-horizontal filter" action="/search"
-							method="GET" modelAttribute="filter">
+							method="GET" modelAttribute="searchFilter">
 							<custom:hiddenInputs
 								excludeParams="min, max, countryId, colorId, subcategoryID, categoryId, fabricatorID,
 					 _countryId, _colorId, _subcategoryID, _categoryId, _fabricatorID" />

@@ -114,7 +114,7 @@
 
 				<div class="col-md-3 col-md-offset-1" id="search">
 				<form:form class="form-horizontal filter" action="/search"
-							method="GET" modelAttribute="filter">
+							method="GET" modelAttribute="searchFilter">
 					<div class="form-group">
 						<form:input class="form-control" path="nameSearch"
 							placeholder="Name" />

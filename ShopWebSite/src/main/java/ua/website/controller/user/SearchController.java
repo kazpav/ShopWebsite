@@ -35,14 +35,14 @@ public class SearchController {
 	@Autowired
 	CategoryService categoryService;
 	
-	@ModelAttribute("filter")
+	@ModelAttribute("searchFilter")
 	public CommodityFilter getFilter(){
 		return new CommodityFilter();
 	}
 	
 	@GetMapping
 	public String show(Model model, @PageableDefault Pageable pageable,
-			@ModelAttribute("filter") CommodityFilter filter){
+			@ModelAttribute("searchFilter") CommodityFilter filter){
 		model.addAttribute("page", commodityService.findAll(pageable,filter));
 		model.addAttribute("subcategories", subcategoryService.findAll());
 		model.addAttribute("colors", colorService.findAll());
