@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ua.website.dao.UserCommodityDao;
 import ua.website.dto.form.UserCommodityForm;
+import ua.website.entity.SaleStatus;
 import ua.website.entity.UserCommodity;
 import ua.website.service.UserCommodityService;
 
@@ -20,6 +21,7 @@ public class UserCommodityServiceImpl implements UserCommodityService{
 	public void saveForm(UserCommodityForm form) {
 		UserCommodity entity = new UserCommodity();
 //		entity.setId(form.getId());
+		entity.setStatus(form.getStatus());
 		entity.setNumber(new Integer(form.getNumber()));
 		entity.setUser(form.getUser());
 		entity.setCommodity(form.getCommodity());
@@ -59,12 +61,13 @@ public class UserCommodityServiceImpl implements UserCommodityService{
 		form.setCommodity(entity.getCommodity());
 		form.setUser(entity.getUser());
 		form.setNumber(String.valueOf(entity.getNumber()));
+		form.setStatus(entity.getStatus());
 		return form;
 	}
 
 	@Override
-	public UserCommodity findUnique(int userId, int commodityId) {
-		return userCommodityDao.findUnique(userId, commodityId);
+	public UserCommodity findUnique(int userId, int commodityId, SaleStatus status) {
+		return userCommodityDao.findUnique(userId, commodityId, status);
 	}
 
 	@Override

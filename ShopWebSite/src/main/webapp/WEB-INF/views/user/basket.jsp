@@ -28,31 +28,35 @@
 			<div class="col-md-4 col-md-offset-1">
 				<div class="row">
 					<c:forEach items="${userCommodities}" var="userCommodity">
-						<p>${userCommodity.user.name}
+						<p>${userCommodity.user.name}--
 							--- ${userCommodity.commodity.name} .Number =
 							${userCommodity.number} <a class="btn btn-danger"
 								href="/basket/delete/${userCommodity.id}">delete</a>
 						</p>
 						<p>
-							<form:form class="form-horizontal"
-								action="/basket" method="POST"
+							<form:form class="form-horizontal" action="/basket" method="POST"
 								modelAttribute="form">
 								<div class="form-group">
-								<p><label for="number"><form:errors path="number" /></label>
+									<p>
+										<label for="number"><form:errors path="number" /></label>
 									</p>
-								<label for="number" class="col-sm-2 control-label">Number</label>
+									<label for="number" class="col-sm-2 control-label">Number</label>
 									<div class="col-sm-10">
-										<form:input  class="form-control" name="number"
-										path="number"	id="number"/>
+										<form:input class="form-control" name="number" path="number"
+											id="number" />
 									</div>
 								</div>
 								<div class="form-group">
-									<form:hidden name="user"
-										path="user"	id="user" value="${user.id}"/>
+									<form:hidden name="user" path="user" id="user"
+										value="${user.id}" />
 								</div>
 								<div class="form-group">
-									<form:hidden name="commodity"
-										path="commodity"	id="commodity" value="${userCommodity.commodity.id}"/>
+									<form:hidden name="commodity" path="commodity" id="commodity"
+										value="${userCommodity.commodity.id}" />
+								</div>
+								<div class="form-group">
+									<form:hidden name="status" id="status" path="status"
+										value="${userCommodity.status}" />
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-10">

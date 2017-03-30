@@ -20,6 +20,8 @@ import ua.website.dto.form.UserCommodityForm;
 import ua.website.editor.CommodityEditor;
 import ua.website.editor.UserEditor;
 import ua.website.entity.Commodity;
+import ua.website.entity.Role;
+import ua.website.entity.SaleStatus;
 import ua.website.entity.User;
 import ua.website.entity.UserCommodity;
 import ua.website.service.CategoryService;
@@ -60,6 +62,8 @@ public class BasketController {
 			int id = userService.findByEmail(principal.getName()).getId();
 			model.addAttribute("userCommodities",
 					userCommodityService.findComByUser(id));
+			model.addAttribute("status_inbasket", SaleStatus.STATUS_INBASKET);
+
 		}
 		return "user-basket";
 	}
@@ -91,8 +95,7 @@ public class BasketController {
 			BindingResult br, Model model,Principal principal){
 		if(principal!=null){
 			if(br.hasErrors()) return show(model, principal);
-			
-			UserCommodity uc = userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId());
+			UserCommodity uc = userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId(), userCommodity.getStatus());
 			Commodity comm = userCommodity.getCommodity();
 			comm.setQuantity(comm.getQuantity()+uc.getNumber()-Integer.parseInt(userCommodity.getNumber()));
 			commodityService.save(comm);

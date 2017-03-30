@@ -28,7 +28,7 @@ public class BasketValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		UserCommodityForm form = (UserCommodityForm) target;
-		UserCommodity uc = userCommodityService.findUnique(form.getUser().getId(), form.getCommodity().getId());
+		UserCommodity uc = userCommodityService.findUnique(form.getUser().getId(), form.getCommodity().getId(), form.getStatus());
 		if(!REG.matcher(form.getNumber()).matches()|| form.getNumber().equals("0")){
 			errors.rejectValue("number", "", "Nope. Use numbers. Also can't be 0");
 		} else

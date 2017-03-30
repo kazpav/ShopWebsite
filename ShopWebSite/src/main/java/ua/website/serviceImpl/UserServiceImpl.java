@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	
 	public void save(User user) {
 		user.setPassword(encoder.encode(user.getPassword()));
-		user.setRole(Role.ROLE_USER);
+		user.setRole(Role.ROLE_UNCONFIRMEDUSER);
 		userDao.save(user);
 	}
 
@@ -51,15 +51,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	public void update(User user) {
 		userDao.save(user);
 	}
-//
-//	public void AddCountryToUser(int idUser, int idCountry) {
-//		User user = userDao.findOne(idUser);
-//		Country country = countryDao.findOne(idCountry);
-//		
-//		userDao.save(user);
-//	}
-
-	
 
 	public User findByName(String name) {
 		return userDao.findByName(name);

@@ -20,8 +20,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ua.website.entity.Role;
 import ua.website.entity.User;
 import ua.website.service.MailSendingService;
 import ua.website.service.UserService;
@@ -45,6 +47,11 @@ public class UserController {
 		model.addAttribute("user", new User());
 		return "user-registration";
 	}
+	@GetMapping("/confirmuser/{id}")
+	public String confirmUser(@PathVariable int id){
+		userService.findOne(id).setRole(Role.ROLE_USER);
+		return "redirect:/";
+	}
 
 	@PostMapping("/registration")
 	public String save(@ModelAttribute("user") @Valid User user,
@@ -52,7 +59,8 @@ public class UserController {
 		if (br.hasErrors())
 			return "user-registration";
 		userService.save(user);
-		mailSendingService.sendMail("Welcome to our shop", user.getEmail(), "Thanks for choosing our shop for buying equipment");
+		mailSendingService.sendMail("Welcome to our shop", user.getEmail(), "Thanks for choosing our shop for buying equipment."
+				+ "Confirm your accoung by using this link http://localhost:8080/confirmuser/"+user.getId());
 		return "redirect:/login";
 	}
 

@@ -25,7 +25,7 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<sec:authorize access="isAuthenticated()">
-								<li><a>${user.name}</a></li>
+								<li><a>Hello, ${user.name}</a></li>
 							</sec:authorize>
 							<sec:authorize access="!isAuthenticated()">
 								<li class="dropdown"><a href="" role="button"

@@ -2,6 +2,7 @@ package ua.website.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,10 @@ public class UserCommodity {
 	@Column(name="_number")
 	private int number;
 	
+	@Enumerated
+	@Column(name="_status")
+	private SaleStatus status;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -31,10 +36,11 @@ public class UserCommodity {
 
 	
 
-	public UserCommodity(int number, User user, Commodity commodity) {
+	public UserCommodity(int number, User user, Commodity commodity,SaleStatus status) {
 		this.number = number;
 		this.user = user;
 		this.commodity = commodity;
+		this.status = status;
 	}
 
 
@@ -69,6 +75,18 @@ public class UserCommodity {
 
 	public void setNumber(int number) {
 		this.number = number;
+	}
+
+
+
+	public SaleStatus getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(SaleStatus status) {
+		this.status = status;
 	}
 	
 	

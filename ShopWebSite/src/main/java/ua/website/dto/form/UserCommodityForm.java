@@ -3,6 +3,7 @@ package ua.website.dto.form;
 
 
 import ua.website.entity.Commodity;
+import ua.website.entity.SaleStatus;
 import ua.website.entity.User;
 
 public class UserCommodityForm {
@@ -12,8 +13,12 @@ public class UserCommodityForm {
 	
 	private String number;
 	
+	private SaleStatus status;
+	
 	private User user;
 	private Commodity commodity;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -37,6 +42,12 @@ public class UserCommodityForm {
 	}
 	public void setCommodity(Commodity commodity) {
 		this.commodity = commodity;
+	}
+	public SaleStatus getStatus() {
+		return status;
+	}
+	public void setStatus(SaleStatus status) {
+		this.status = status;
 	}
 	
 	

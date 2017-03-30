@@ -23,6 +23,7 @@ import ua.website.dto.form.UserCommodityForm;
 import ua.website.editor.CommodityEditor;
 import ua.website.editor.UserEditor;
 import ua.website.entity.Commodity;
+import ua.website.entity.SaleStatus;
 import ua.website.entity.User;
 import ua.website.entity.UserCommodity;
 import ua.website.service.CategoryService;
@@ -62,6 +63,7 @@ public class ShowCommodityController {
 	public String show(@PathVariable int id, Model model) {
 		model.addAttribute("commodity", commodityService.findOne(id));
 		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("status_inbasket", SaleStatus.STATUS_INBASKET);
 
 		return "user-commodity";
 	}
@@ -74,8 +76,8 @@ public class ShowCommodityController {
 
 			if(br.hasErrors()) return show(id,model);
 			Commodity comm = userCommodity.getCommodity();
-			if(userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId())!=null){
-				UserCommodity uc = userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId());
+			if(userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId(), userCommodity.getStatus())!=null){
+				UserCommodity uc = userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId(),userCommodity.getStatus());
 				uc.setNumber(uc.getNumber()+Integer.parseInt(userCommodity.getNumber()));
 				System.out.println(uc.getId());
 				System.out.println(uc.getNumber());	
