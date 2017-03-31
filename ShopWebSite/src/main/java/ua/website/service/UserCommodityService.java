@@ -3,6 +3,7 @@ package ua.website.service;
 import java.util.List;
 
 import ua.website.dto.form.UserCommodityForm;
+import ua.website.entity.PurchaseContact;
 import ua.website.entity.SaleStatus;
 import ua.website.entity.UserCommodity;
 
@@ -19,6 +20,8 @@ public interface UserCommodityService {
 	List<UserCommodity> findUserPurchases(int id, SaleStatus status);
 	UserCommodity findUnique(int userId, int commodityId, SaleStatus status);
 	
-	void confirmPurchase(List<UserCommodity> list);
+	void confirmPurchase(List<UserCommodity> list, PurchaseContact purchaseContact);
+	List<UserCommodity> findPurchases(SaleStatus status);
+
 
 }

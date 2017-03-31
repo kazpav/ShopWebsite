@@ -71,7 +71,7 @@
 					</c:if>
 				</div>
 				<div class="row">
-					
+					<a class="btn btn-default" href="/confirmpurchase">Confirm purchase</a>
 				</div>
 			</div>
 			<div class="col-md-2 col-md-offset-1" id="rightcol">

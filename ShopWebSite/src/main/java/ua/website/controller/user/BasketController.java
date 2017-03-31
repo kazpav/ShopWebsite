@@ -90,18 +90,18 @@ public class BasketController {
 		return "redirect:/";
 
 	}
-	@GetMapping("/submitshopping/{id}")
-	public String submitShopping(@PathVariable int id, Principal principal){
-		if(principal!=null){
-			if(userService.findByEmail(principal.getName()).getId() == userCommodityService.findOne(id).getUser().getId()){
-				List<UserCommodity> list = userCommodityService.findUserPurchases(id, SaleStatus.STATUS_INBASKET);
-				userCommodityService.confirmPurchase(list);
-			}else{
-				return "redirect:/";
-			}
-		}
-		return "redirect:/";
-	}
+//	@GetMapping("/submitshopping/{id}")
+//	public String submitShopping(@PathVariable int id, Principal principal){
+//		if(principal!=null){
+//			if(userService.findByEmail(principal.getName()).getId() == userCommodityService.findOne(id).getUser().getId()){
+//				List<UserCommodity> list = userCommodityService.findUserPurchases(id, SaleStatus.STATUS_INBASKET);
+//				userCommodityService.confirmPurchase(list);
+//			}else{
+//				return "redirect:/";
+//			}
+//		}
+//		return "redirect:/";
+//	}
 	
 	@PostMapping
 	public String changeQuantity(@ModelAttribute("form")@Valid UserCommodityForm userCommodity,

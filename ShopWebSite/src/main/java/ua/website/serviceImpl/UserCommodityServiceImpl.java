@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ua.website.dao.UserCommodityDao;
 import ua.website.dto.form.UserCommodityForm;
+import ua.website.entity.PurchaseContact;
 import ua.website.entity.SaleStatus;
 import ua.website.entity.UserCommodity;
 import ua.website.service.UserCommodityService;
@@ -76,11 +77,19 @@ public class UserCommodityServiceImpl implements UserCommodityService{
 	}
 
 	@Override
-	public void confirmPurchase(List<UserCommodity> list) {
+	public void confirmPurchase(List<UserCommodity> list, PurchaseContact purchaseContact) {
 		for (UserCommodity userCommodity : list) {
 			userCommodity.setStatus(SaleStatus.STATUS_CONFIRMED);
+			userCommodity.setPurchaseContact(purchaseContact);
+			userCommodityDao.save(userCommodity);
 		}
 		
+	}
+
+	@Override
+	public List<UserCommodity> findPurchases(SaleStatus status) {
+		// TODO Auto-generated method stub
+		return userCommodityDao.findPurchases(status);
 	}
 
 	

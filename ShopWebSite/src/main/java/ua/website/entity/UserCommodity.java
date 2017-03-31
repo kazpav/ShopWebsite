@@ -1,5 +1,7 @@
 package ua.website.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -26,22 +28,31 @@ public class UserCommodity {
 	@Column(name="_status")
 	private SaleStatus status;
 	
+
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Commodity commodity;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private PurchaseContact purchaseContact;
 	
 	public UserCommodity() {
 	}
 
-	
 
-	public UserCommodity(int number, User user, Commodity commodity,SaleStatus status) {
+	public UserCommodity(int number, SaleStatus status, User user, Commodity commodity,
+			PurchaseContact purchaseContact) {
 		this.number = number;
+		this.status = status;
 		this.user = user;
 		this.commodity = commodity;
-		this.status = status;
+		this.purchaseContact = purchaseContact;
 	}
+
+
+
+
 
 
 
@@ -88,8 +99,16 @@ public class UserCommodity {
 	public void setStatus(SaleStatus status) {
 		this.status = status;
 	}
-	
-	
+
+
+	public PurchaseContact getPurchaseContact() {
+		return purchaseContact;
+	}
+
+
+	public void setPurchaseContact(PurchaseContact purchaseContact) {
+		this.purchaseContact = purchaseContact;
+	}
 	
 	
 }

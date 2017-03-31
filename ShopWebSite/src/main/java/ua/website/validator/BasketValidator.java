@@ -12,7 +12,7 @@ import ua.website.service.UserCommodityService;
 public class BasketValidator implements Validator{
 
 	private final UserCommodityService userCommodityService;
-	
+
 	private static final Pattern REG = Pattern.compile("^([0-9]{1,17})$");
 	
 	
