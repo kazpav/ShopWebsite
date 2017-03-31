@@ -70,6 +70,9 @@
 						<h3>Basket is empty</h3>
 					</c:if>
 				</div>
+				<div class="row">
+					
+				</div>
 			</div>
 			<div class="col-md-2 col-md-offset-1" id="rightcol">
 				<div class="row">

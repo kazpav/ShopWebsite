@@ -16,7 +16,9 @@ public interface UserCommodityService {
 	
 	UserCommodityForm findForm(int id);
 	
-	List<UserCommodity> findComByUser(int id);
+	List<UserCommodity> findUserPurchases(int id, SaleStatus status);
 	UserCommodity findUnique(int userId, int commodityId, SaleStatus status);
+	
+	void confirmPurchase(List<UserCommodity> list);
 
 }

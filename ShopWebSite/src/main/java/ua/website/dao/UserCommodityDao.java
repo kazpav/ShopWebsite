@@ -13,8 +13,9 @@ public interface UserCommodityDao extends JpaRepository<UserCommodity, Integer>{
 	
 	
 	//try to use id if doesn't work
-	@Query("SELECT u FROM UserCommodity u LEFT JOIN FETCH u.user LEFT JOIN FETCH u.commodity WHERE u.user.id=?1")
-	List<UserCommodity> findComByUser(int id);
+	@Query("SELECT u FROM UserCommodity u LEFT JOIN FETCH u.user LEFT JOIN FETCH u.commodity WHERE u.user.id=?1"
+			+ " and u.status=?2")
+	List<UserCommodity> findUserPurchases(int id, SaleStatus status);
 	
 	@Query("SELECT u FROM UserCommodity u WHERE u.user.id=?1 and u.commodity.id=?2 and u.status=?3")
 	UserCommodity findUnique(int userId, int commodityId, SaleStatus status);

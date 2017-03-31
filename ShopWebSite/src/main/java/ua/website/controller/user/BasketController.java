@@ -1,6 +1,7 @@
 package ua.website.controller.user;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -61,7 +62,7 @@ public class BasketController {
 		if (principal != null) {
 			int id = userService.findByEmail(principal.getName()).getId();
 			model.addAttribute("userCommodities",
-					userCommodityService.findComByUser(id));
+					userCommodityService.findUserPurchases(id, SaleStatus.STATUS_INBASKET));
 			model.addAttribute("status_inbasket", SaleStatus.STATUS_INBASKET);
 
 		}
@@ -88,6 +89,18 @@ public class BasketController {
 		}
 		return "redirect:/";
 
+	}
+	@GetMapping("/submitshopping/{id}")
+	public String submitShopping(@PathVariable int id, Principal principal){
+		if(principal!=null){
+			if(userService.findByEmail(principal.getName()).getId() == userCommodityService.findOne(id).getUser().getId()){
+				List<UserCommodity> list = userCommodityService.findUserPurchases(id, SaleStatus.STATUS_INBASKET);
+				userCommodityService.confirmPurchase(list);
+			}else{
+				return "redirect:/";
+			}
+		}
+		return "redirect:/";
 	}
 	
 	@PostMapping

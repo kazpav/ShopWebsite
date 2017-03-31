@@ -49,8 +49,8 @@ public class UserCommodityServiceImpl implements UserCommodityService{
 	}
 
 	@Override
-	public List<UserCommodity> findComByUser(int id) {
-		return userCommodityDao.findComByUser(id);
+	public List<UserCommodity> findUserPurchases(int id, SaleStatus status) {
+		return userCommodityDao.findUserPurchases(id, status);
 	}
 
 	@Override
@@ -74,5 +74,15 @@ public class UserCommodityServiceImpl implements UserCommodityService{
 	public void save(UserCommodity userCommodity) {
 		userCommodityDao.save(userCommodity);
 	}
+
+	@Override
+	public void confirmPurchase(List<UserCommodity> list) {
+		for (UserCommodity userCommodity : list) {
+			userCommodity.setStatus(SaleStatus.STATUS_CONFIRMED);
+		}
+		
+	}
+
+	
 	
 }
