@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ua.website.entity.Role;
 import ua.website.entity.User;
@@ -34,35 +35,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	@Autowired 
-	private MailSendingService mailSendingService;
+	
 
-	@InitBinder("user")
-	protected void bind(WebDataBinder binder) {
-		binder.setValidator(new UserValidator(userService));
-	}
-
-	@GetMapping("/registration")
-	public String registration(Model model) {
-		model.addAttribute("user", new User());
-		return "user-registration";
-	}
-	@GetMapping("/confirmuser/{id}")
-	public String confirmUser(@PathVariable int id){
-		userService.findOne(id).setRole(Role.ROLE_USER);
-		return "redirect:/";
-	}
-
-	@PostMapping("/registration")
-	public String save(@ModelAttribute("user") @Valid User user,
-			BindingResult br, Model model) {
-		if (br.hasErrors())
-			return "user-registration";
-		userService.save(user);
-		mailSendingService.sendMail("Welcome to our shop", user.getEmail(), "Thanks for choosing our shop for buying equipment."
-				+ "Confirm your accoung by using this link http://localhost:8080/confirmuser/"+user.getId());
-		return "redirect:/login";
-	}
+	
 
 	@GetMapping("/login")
 	public String login() {

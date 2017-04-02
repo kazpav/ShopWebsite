@@ -8,7 +8,7 @@
 		<li><a href="/admin/colorModer">Color</a></li>
 		<li><a href="/admin/countryModer">Country</a></li>
 		<li><a href="/admin/subcategModer">Subcategory</a></li>
-		<li><a href="/admin/currentPurchases">Current purchases</a></li>
+		<li><a href="/admin/currentPurchases">(${quantityOfConfirmedPurchases})Current purchases</a></li>
 		<li><a href="/admin/salesHistory">Sale history</a></li>
 	</ul>
 	

@@ -7,10 +7,42 @@
 
 
 <link rel="stylesheet" href="/resources/css/selector.css">
-<link rel="stylesheet" href="/resources/css/index.css">
+<!-- <link rel="stylesheet" href="/resources/css/index.css"> -->
 
-
-
+<div id="main">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-12" id="leftselector">
+						<p id="selections">Categories</p>
+						<c:forEach items="${categories}" var="category">
+							<p>
+								<a href="/category/${category.id}">${category.name}</a>
+							</p>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<p>Our shop on the map</p>
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2572.878846840802!2d24.026820264422387!3d49.84473391789522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf9783fecb4fecf1f!2z0JvRjNCy0ZbQstGB0YzQutC40Lkg0J3QsNGG0ZbQvtC90LDQu9GM0L3QuNC5INCQ0LrQsNC00LXQvNGW0YfQvdC40Lkg0YLQtdCw0YLRgCDQvtC_0LXRgNC4INGC0LAg0LHQsNC70LXRgtGDINGW0LwuINCh0L7Qu9C-0LzRltGXINCa0YDRg9GI0LXQu9GM0L3QuNGG0YzQutC-0Zc!5e0!3m2!1suk!2sua!4v1478396662149"
+					width="600" height="450" frameborder="0" style="border: 0"
+					allowfullscreen></iframe>
+			</div>
+			<div class="col-md-2 col-md-offset-2" id="rightcol">
+				<div class="row">
+					<div class="col-md-12">
+						<a href=""><img src="/images/layouts/ad.jpg" width="250"
+							height="250"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 
 <div id="main" class="row">
 	<div class="container-fluid">
 		<div class="row">
@@ -146,4 +178,4 @@
 		<li><a href="/category/${category.id}">${category.name}</a></li>
 	</c:forEach>
 </ul>
-
+ -->

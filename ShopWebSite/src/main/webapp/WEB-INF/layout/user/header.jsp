@@ -90,9 +90,10 @@
 									<li><a href="/admin"><img
 											src="/images/layouts/admin.png"> Moderating</a></li>
 								</sec:authorize>
-
-								<li><a href="/basket"><img
-										src="/images/layouts/basket.png">Basket</a></li>
+								<sec:authorize access="hasRole('ROLE_USER')">
+									<li><a href="/basket"><img
+											src="/images/layouts/basket.png">(${purchaseQuantity})Basket</a></li>
+								</sec:authorize>
 							</sec:authorize>
 
 						</ul>
@@ -113,24 +114,24 @@
 				</div>
 
 				<div class="col-md-3 col-md-offset-1" id="search">
-				<form:form class="form-horizontal filter" action="/search"
-							method="GET" modelAttribute="searchFilter">
-					<div class="form-group">
-						<form:input class="form-control" path="nameSearch"
-							placeholder="Name" />
-						<p>
-							<a href="/search">Advanced search</a>
-						</p>
+					<form:form class="form-horizontal filter" action="/search"
+						method="GET" modelAttribute="searchFilter">
+						<div class="form-group">
+							<form:input class="form-control" path="nameSearch"
+								placeholder="Name" />
+							<p>
+								<a href="/search">Advanced search</a>
+							</p>
 
-					</div>
-				</form:form>
+						</div>
+					</form:form>
 				</div>
 				<div class="col-md-1" id="searchbutton">
 					<button type="submit" class="btn btn-primary">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					</button>
 				</div>
-	
+
 				<div class="col-md-2" id="socnetworks">
 					<a href="https://www.facebook.com" target="_blank"><img
 						src="/images/layouts/facebook.png"></a> <a href="https://vk.com"

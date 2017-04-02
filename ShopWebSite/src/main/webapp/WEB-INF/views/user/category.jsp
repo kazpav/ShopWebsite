@@ -11,15 +11,10 @@
 			<div class="col-md-2 col-md-offset-1">
 				<div class="row">
 					<div class="col-md-12" id="leftselector">
-						<p id="selections">Розділи</p>
+						<p id="selections">Categories</p>
 						<c:forEach items="${categories}" var="category">
-							<p>
-								<a href="/category/${category.id}">${category.name}</a>
-							</p>
+							<a href="/category/${category.id}"><p>${category.name}</p> </a>
 						</c:forEach>
-						<p>
-							<a href="">Палатки</a>
-						</p>
 					</div>
 				</div>
 			</div>
@@ -31,16 +26,31 @@
 							<tr>
 								<td><img
 									src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}"
-									height="200" width="200">
-								</td>
+									height="200" width="200"></td>
 								<td id="itemInfo">
-									<p><h3><a href="/commodity/${commodity.id}">${commodity.name}</a></h3></p>
-									<p><b>Price:</b> ${commodity.price}</p>
-									<p><b>Category:</b> ${commodity.category.name}</p>
-									<p><b>Subcategory:</b> ${commodity.subcategory.name}</p>
-									<p><b>Fabricator:</b> ${commodity.fabricator.name}</p>
-									<p><b>Country:</b> ${commodity.country.name}</p>
-									<p><b>Color:</b> ${commodity.color.name}</p>
+									<p>
+									<h3>
+										<a href="/commodity/${commodity.id}">${commodity.name}</a>
+									</h3>
+									</p>
+									<p>
+										<b>Price:</b> ${commodity.price}
+									</p>
+									<p>
+										<b>Category:</b> ${commodity.category.name}
+									</p>
+									<p>
+										<b>Subcategory:</b> ${commodity.subcategory.name}
+									</p>
+									<p>
+										<b>Fabricator:</b> ${commodity.fabricator.name}
+									</p>
+									<p>
+										<b>Country:</b> ${commodity.country.name}
+									</p>
+									<p>
+										<b>Color:</b> ${commodity.color.name}
+									</p>
 								</td>
 							</tr>
 						</table>
@@ -53,8 +63,8 @@
 			<div class="col-md-2 col-md-offset-1" id="rightcol">
 				<div class="row">
 					<div class="col-md-12">
-						<a href=""><img src="/images/layouts/ad.jpg" width="200"
-							height="200"></a>
+						<a href=""><img src="/images/layouts/ad.jpg" width="250"
+							height="250"></a>
 					</div>
 				</div>
 			</div>

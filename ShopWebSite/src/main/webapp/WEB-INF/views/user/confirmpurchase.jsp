@@ -23,23 +23,25 @@
 					<form:form class="form-horizontal" action="/confirmpurchase"
 						method="POST" modelAttribute="form">
 						<div class="form-group">
-							<label for="fullName" class="col-sm-2 control-label">Full
-								name</label>
+							<label for="fullName"><form:errors path="fullName" /></label> <label
+								for="fullName" class="col-sm-2 control-label">Full name</label>
 							<div class="col-sm-10">
 								<form:input class="form-control" name="fullName" path="fullName"
 									id="fullName" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="contactNumber" class="col-sm-2 control-label">Contact
-								number</label>
+							<label for="contactNumber"><form:errors
+									path="contactNumber" /></label> <label for="contactNumber"
+								class="col-sm-2 control-label">Contact number</label>
 							<div class="col-sm-10">
 								<form:input class="form-control" name="contactNumber"
 									path="contactNumber" id="contactNumber" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="address" class="col-sm-2 control-label">Delivery
+							<label for="address"><form:errors path="address" /></label> <label
+								for="address" class="col-sm-2 control-label">Delivery
 								adress</label>
 							<div class="col-sm-10">
 								<form:input class="form-control" name="address" path="address"

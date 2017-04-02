@@ -1,5 +1,6 @@
 package ua.website.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import ua.website.dto.form.UserCommodityForm;
@@ -22,6 +23,11 @@ public interface UserCommodityService {
 	
 	void confirmPurchase(List<UserCommodity> list, PurchaseContact purchaseContact);
 	List<UserCommodity> findPurchases(SaleStatus status);
+	
+	int findQuantityOfUserPurchasesInBaset(int id,SaleStatus status);
+	int findQuantityOfConfirmedPurchases(SaleStatus status);
+	
+	BigDecimal findSummCostForUser(int id, SaleStatus status);
 
 
 }

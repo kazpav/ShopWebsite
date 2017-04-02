@@ -39,8 +39,11 @@ public class UserValidator implements Validator {
 					"The password must be at least " + MINIMUM_PASSWORD_LENGTH
 							+ " characters in length.");
 		}
-		//input текстовий для - відправлення
-		//transient
+		if(!user.getPassword().equals(user.getRepeatPassword())){
+			errors.rejectValue("password", "", "Password field and repeat password field are not equals");
+			System.out.println(user.getPassword());
+			System.out.println(user.getRepeatPassword());
+		}
 		
 	}
 

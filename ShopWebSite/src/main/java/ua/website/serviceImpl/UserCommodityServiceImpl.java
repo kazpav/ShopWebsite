@@ -1,5 +1,6 @@
 package ua.website.serviceImpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,10 +89,31 @@ public class UserCommodityServiceImpl implements UserCommodityService{
 
 	@Override
 	public List<UserCommodity> findPurchases(SaleStatus status) {
-		// TODO Auto-generated method stub
 		return userCommodityDao.findPurchases(status);
 	}
 
+	@Override
+	public int findQuantityOfUserPurchasesInBaset(int id, SaleStatus status) {
+		List<UserCommodity> list = userCommodityDao.findUserPurchases(id, status);
+		return list.size();
+	}
+
+	@Override
+	public int findQuantityOfConfirmedPurchases(SaleStatus status) {
+		List<UserCommodity> list = userCommodityDao.findPurchases(status);
+		return list.size();
+	}
+
+	@Override
+	public BigDecimal findSummCostForUser(int id, SaleStatus status) {
+		BigDecimal summ= new BigDecimal(0.0);
+		List<UserCommodity> list = userCommodityDao.findUserPurchases(id, status);
+		for (UserCommodity userCommodity : list) {
+			summ = summ.add(userCommodity.getCommodity().getPrice().multiply(new BigDecimal(userCommodity.getNumber())));
+		}
+		return summ;
+	}
+	
 	
 	
 }

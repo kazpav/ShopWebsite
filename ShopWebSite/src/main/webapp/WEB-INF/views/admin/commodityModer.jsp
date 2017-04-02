@@ -126,6 +126,9 @@
 						itemValue="id" itemLabel="name" />
 				</div>
 				<div class="form-group">
+					<label for="quantity"><form:errors path="quantity" /></label>
+				</div>
+				<div class="form-group">
 					<label for="quantity">Quantity</label>
 					<form:input type="text" class="form-control" name="quantity"
 						id="quantity" path="quantity" />

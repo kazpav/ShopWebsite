@@ -52,7 +52,7 @@ public class PurchaseContactServieImpl implements PurchaseContactService {
 		entity.setAddress(purchaseContactForm.getAddress());
 		entity.setContactNumber(Integer.valueOf(purchaseContactForm
 				.getContactNumber()));
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		try {
 			entity.setDate(formatter.parse(purchaseContactForm.getDate()));
 		} catch (ParseException e) {

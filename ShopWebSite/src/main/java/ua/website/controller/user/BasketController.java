@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import ua.website.dto.form.UserCommodityForm;
 import ua.website.editor.CommodityEditor;
@@ -34,6 +36,7 @@ import ua.website.validator.ShowCommodityValidator;
 
 @Controller
 @RequestMapping("/basket")
+@SessionAttributes("form")
 public class BasketController {
 
 	@Autowired
@@ -64,6 +67,7 @@ public class BasketController {
 			model.addAttribute("userCommodities",
 					userCommodityService.findUserPurchases(id, SaleStatus.STATUS_INBASKET));
 			model.addAttribute("status_inbasket", SaleStatus.STATUS_INBASKET);
+			model.addAttribute("summaryCost", userCommodityService.findSummCostForUser(id, SaleStatus.STATUS_INBASKET));
 
 		}
 		return "user-basket";
@@ -105,7 +109,7 @@ public class BasketController {
 	
 	@PostMapping
 	public String changeQuantity(@ModelAttribute("form")@Valid UserCommodityForm userCommodity,
-			BindingResult br, Model model,Principal principal){
+			BindingResult br, Model model,Principal principal, SessionStatus sessionStatus){
 		if(principal!=null){
 			if(br.hasErrors()) return show(model, principal);
 			UserCommodity uc = userCommodityService.findUnique(userCommodity.getUser().getId(), userCommodity.getCommodity().getId(), userCommodity.getStatus());
@@ -115,6 +119,7 @@ public class BasketController {
 			uc.setNumber(Integer.parseInt(userCommodity.getNumber()));
 			userCommodityService.save(uc);
 		}
+		sessionStatus.setComplete();
 		return "redirect:/basket";
 
 	}

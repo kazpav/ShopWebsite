@@ -32,6 +32,12 @@
     			</div>
   			</div>
   			<div class="form-group">
+  				<label for="repeatPassword" class="col-sm-2 control-label">Repeat password</label>
+    			<div class="col-sm-10">
+      				<form:password class="form-control" path="repeatPassword" id="repeatPassword"/>
+    			</div>
+  			</div>
+  			<div class="form-group">
     			<div class="col-sm-offset-2 col-sm-10">
       				<button type="submit" class="btn btn-default">Register</button>
     			</div>

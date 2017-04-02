@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	
 	public void save(User user) {
 		user.setPassword(encoder.encode(user.getPassword()));
-		user.setRole(Role.ROLE_UNCONFIRMEDUSER);
+		user.setRole(Role.ROLE_USER);
 		userDao.save(user);
 	}
 

@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -43,13 +44,12 @@ public class User implements UserDetails {
 	@Column(name="_role")
 	private Role role;
 	
+	@Transient
+	private String repeatPassword;
+	
 	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
 	private List<UserCommodity> userCommodities;
-//	@ManyToMany
-//	@JoinTable(name="commodity_user",
-//	joinColumns=@JoinColumn(name="id_user"),
-//	inverseJoinColumns=@JoinColumn(name="id_commodity"))
-//	private List<Commodity> commodities;
+
 
 	
 	public User() {
@@ -214,6 +214,30 @@ public class User implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+
+
+
+	public String getRepeatPassword() {
+		return repeatPassword;
+	}
+
+
+
+	public void setRepeatPassword(String repeatPassword) {
+		this.repeatPassword = repeatPassword;
+	}
+
+
+
+	public List<UserCommodity> getUserCommodities() {
+		return userCommodities;
+	}
+
+
+
+	public void setUserCommodities(List<UserCommodity> userCommodities) {
+		this.userCommodities = userCommodities;
 	}
 
 	

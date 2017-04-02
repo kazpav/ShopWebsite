@@ -28,6 +28,7 @@ public class CommodityValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "name can't be empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "", "description can't be empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "", "price can't be empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "quantity", "", "quantity can't be empty");
 		if(!REG.matcher(form.getPrice()).matches()){
 			errors.rejectValue("price", "", "Must be separated by . or , also only numbers");
 		}else if(commodityService.findByName(form.getName())!=null){
