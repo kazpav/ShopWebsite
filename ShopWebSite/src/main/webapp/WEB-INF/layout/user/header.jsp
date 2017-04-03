@@ -13,14 +13,14 @@
 			<nav class="navbar navbar-default">
 				<div class="containfer-fluid">
 					<div class="collapse navbar-collapse" id="one">
-						<ul class="nav navbar-nav">
-							<li><a href=""><img src="/images/layouts/truck.png">aОплата
-									та доставка</a></li>
-							<li><a href=""><img src="/images/layouts/email.png">
-									Контакти</a></li>
-							<li><a href=""><img src="/images/layouts/info.png">
-									Допомога</a></li>
-							<li><a href=""><img src="/images/layouts/phone.png">
+						<ul class="nav navbar-nav navbar-left">
+							<li><a href="/infopage"><img src="/images/layouts/truck.png">Delivery
+									</a></li>
+							<li><a href="/infopage"><img src="/images/layouts/email.png">
+									Contacts</a></li>
+							<li><a href="/infopage"><img src="/images/layouts/info.png">
+									Help</a></li>
+							<li><a href="/infopage"><img src="/images/layouts/phone.png">
 									0 800 000 000</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
@@ -37,7 +37,7 @@
 										<form:form class="form-horizontal" action="/login"
 											method="POST">
 											<li>
-												<div class="form-group">
+												<div class="form-group" id="dropdownInput">
 													<label class="control-label col-md-4" for="login">Email</label>
 													<div class="col-md-8">
 														<input id="login" name="login" class="form-control">
@@ -45,7 +45,7 @@
 												</div>
 											</li>
 											<li>
-												<div class="form-group">
+												<div class="form-group" id="dropdownInput">
 													<label class="control-label col-md-4" for="password">Password</label>
 													<div class="col-md-8">
 														<input id="password" name="password" class="form-control"
@@ -54,7 +54,7 @@
 												</div>
 											</li>
 											<li>
-												<div class="form-group">
+												<div class="form-group"> 
 													<div class="col-sm-offset-2 col-sm-10">
 														<div class="checkbox">
 															<label> <input name="remember-me" type="checkbox">
@@ -62,10 +62,10 @@
 															</label>
 														</div>
 													</div>
-												</div>
+												 </div>
 											</li>
 											<li>
-												<div class="form-group">
+												<div class="form-group"> 
 													<div class="col-md-3 col-md-offset-4">
 														<button type="submit" class="btn btn-default">Sing
 															in</button>
@@ -77,7 +77,7 @@
 									</ul></li>
 							</sec:authorize>
 							<sec:authorize access="!isAuthenticated()">
-								<li><a href="/registration" target="_blank"><img
+								<li><a href="/registration"><img
 										src="/images/layouts/register.png">Registration</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">

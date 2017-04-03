@@ -5,6 +5,8 @@
 <%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>
 <link rel="stylesheet" href="/resources/css/selector.css">
 <link rel="stylesheet" href="/resources/css/itemForm.css">
+<link rel="stylesheet" href="/resources/css/search.css">
+
 <script type="text/javascript" src="/resources/js/spoiler.js"></script>
 <style type="text/css">
 .spoiler_body {
@@ -31,15 +33,12 @@
 			<div class="col-md-2 col-md-offset-1">
 				<div class="row">
 					<div class="col-md-12" id="leftselector">
-						<p id="selections">Розділи</p>
+						<p id="selections">Categories</p>
 						<c:forEach items="${categories}" var="category">
 							<p>
 								<a href="/category/${category.id}">${category.name}</a>
 							</p>
 						</c:forEach>
-						<p>
-							<a href="">Палатки</a>
-						</p>
 					</div>
 				</div>
 			</div>
@@ -49,7 +48,7 @@
 						<form:form class="form-horizontal filter" action="/search"
 							method="GET" modelAttribute="searchFilter">
 							<custom:hiddenInputs
-								excludeParams="min, max, countryId, colorId, subcategoryID, categoryId, fabricatorID,
+								excludeParams="nameSearch, min, max, countryId, colorId, subcategoryID, categoryId, fabricatorID,
 					 _countryId, _colorId, _subcategoryID, _categoryId, _fabricatorID" />
 							<div class="form-group">
 								<div class="col-sm-6">
@@ -121,8 +120,8 @@
 								<div class="col-sm-5 col-sm-offset-1">
 									<div class="form-group">
 										<div>
-										<a href="" class="spoiler_links">
-											<label class="control-label">Fabricator &#8595</label></a>
+											<a href="" class="spoiler_links"> <label
+												class="control-label">Fabricator &#8595</label></a>
 											<div class="spoiler_body">
 												<form:checkboxes element="div" items="${fabricators}"
 													itemValue="id" itemLabel="name" path="fabricatorId" />
@@ -130,39 +129,39 @@
 										</div>
 									</div>
 								</div>
+								<div class="col-sm-5 col-sm-offset-1">
+									<button type="submit" class="btn btn-primary">Ok</button>
+								</div>
 							</div>
-							<button type="submit" class="btn btn-primary">Ok</button>
 						</form:form>
-							<a href="/search"><button class="btn btn-primary">Clear</button></a>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6 col-xs-6 text-center">
+				<div class="row" id="buttonpannel">
+					<div class="col-md-4 col-xs-4 text-center">
 						<div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button"
 								data-toggle="dropdown">
 								Sort <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<custom:sort innerHtml="Default"
-									paramValue="id" />
-								<custom:sort innerHtml="Name ascending"
-									paramValue="name" />
-								<custom:sort innerHtml="Name descending"
-									paramValue="price,desc" />
-								<custom:sort innerHtml="Price ascending"
-									paramValue="price" />
+								<custom:sort innerHtml="Default" paramValue="id" />
+								<custom:sort innerHtml="Name ascending" paramValue="name" />
+								<custom:sort innerHtml="Name descending" paramValue="price,desc" />
+								<custom:sort innerHtml="Price ascending" paramValue="price" />
 								<custom:sort innerHtml="Price descending"
 									paramValue="price,desc" />
 							</ul>
 						</div>
 					</div>
-					<div class="col-md-6 col-xs-6 text-center">
+					<div class="col-md-4 col-xs-4 text-center">
 						<custom:size posibleSizes="1,2,5,10" size="${page.size}" />
+					</div>
+					<div class="col-md-4 col-xs-4 text-center">
+						<a href="/search"><button class="btn btn-primary">Clear</button></a>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4 col-md-offset-1">
+					<div class="col-md-12">
 						<c:forEach items="${page.content}" var="commodity">
 							<div id="itemForm">
 								<table>
@@ -213,8 +212,8 @@
 			<div class="col-md-2 col-md-offset-1" id="rightcol">
 				<div class="row">
 					<div class="col-md-12">
-						<a href=""><img src="/images/layouts/ad.jpg" width="200"
-							height="200"></a>
+						<a href=""><img src="/images/layouts/ad.jpg" width="250"
+							height="250"></a>
 					</div>
 				</div>
 			</div>

@@ -7,7 +7,11 @@
 	margin-left:15px;
 	
 }
-
+#dropdownInput{
+	margin-bottom:0px;
+	padding-right:2px;
+	
+}
 #one{
     box-shadow: 10px 10px 5px #888888;
 	}

@@ -16,15 +16,12 @@
 			<div class="col-md-2 col-md-offset-1">
 				<div class="row">
 					<div class="col-md-12" id="leftselector">
-						<p id="selections">Розділи</p>
+						<p id="selections">Categories</p>
 						<c:forEach items="${categories}" var="category">
 							<p>
 								<a href="/category/${category.id}">${category.name}</a>
 							</p>
 						</c:forEach>
-						<p>
-							<a href="">Палатки</a>
-						</p>
 					</div>
 				</div>
 			</div>
@@ -41,7 +38,7 @@
 									<h3>${commodity.name}</h3>
 									</p>
 									<p>
-										<b>Price:</b> ${commodity.price}
+										<b>Price:</b> ${commodity.price} UAH
 									</p>
 									<p>
 										<b>Category:</b> ${commodity.category.name}
@@ -67,48 +64,48 @@
 					</div>
 				</div>
 				<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('ROLE_USER')">
 
-					<div class="row">
-						<div class="col-md-12 col-xs-12">
-							<form:form class="form-horizontal" action="/commodity/${commodity.id}"
-								method="POST" modelAttribute="form">
-								<div class="form-group">
-									<p><label for="number"><form:errors path="number" /></label>
-									</p>
-									<label for="number" class="col-sm-2 control-label">Number</label>
-									<div class="col-sm-10">
-										<form:input  class="form-control" name="number"
-										path="number"	id="number"/>
+						<div class="row">
+							<div class="col-md-12 col-xs-12">
+								<form:form class="form-horizontal"
+									action="/commodity/${commodity.id}" method="POST"
+									modelAttribute="form">
+									<div class="form-group">
+										<p>
+											<label for="number"><form:errors path="number" /></label>
+										</p>
+										<label for="number" class="col-sm-2 control-label">Number</label>
+										<div class="col-sm-2">
+											<form:input class="form-control" name="number" path="number"
+												id="number" />
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<form:hidden name="user"
-										path="user"	id="user" value="${user.id}"/>
-								</div>
-								<div class="form-group">
-									<form:hidden name="commodity"
-										path="commodity"	id="commodity" value="${commodity.id}"/>
-								</div>
-								<div class="form-group">
-									<form:hidden name="status" id="status" path="status" value="${status_inbasket}"/>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<button type="submit" class="btn btn-default">Add</button>
+									<div class="form-group">
+										<form:hidden name="user" path="user" id="user"
+											value="${user.id}" />
+										<form:hidden name="commodity" path="commodity" id="commodity"
+											value="${commodity.id}" />
+										<form:hidden name="status" id="status" path="status"
+											value="${status_inbasket}" />
 									</div>
-								</div>
-							</form:form>
+									<div class="form-group">
+										<div class="col-sm-offset-2 col-sm-10">
+											<button type="submit" class="btn btn-default">Add</button>
+										</div>
+									</div>
+								</form:form>
+							</div>
 						</div>
-					</div>
-
+					</sec:authorize>
 				</sec:authorize>
 			</div>
 
 			<div class="col-md-2 col-md-offset-1" id="rightcol">
 				<div class="row">
 					<div class="col-md-12">
-						<a href=""><img src="/images/layouts/ad.jpg" width="200"
-							height="200"></a>
+						<a href=""><img src="/images/layouts/ad.jpg" width="250"
+							height="250"></a>
 					</div>
 				</div>
 			</div>

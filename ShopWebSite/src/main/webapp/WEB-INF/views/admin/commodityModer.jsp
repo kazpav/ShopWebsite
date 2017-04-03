@@ -70,12 +70,14 @@
 				<button type="submit" class="btn btn-primary">Ok</button>
 			</form:form>
 		</div>
-		
-		<div class="col-md-offset-1 col-md-4">
+
+		<div class="col-md-offset-2 col-md-4">
 			<form:form class="form-horizontal" action="/admin/commodityModer"
-				method="POST" modelAttribute="commodity" enctype="multipart/form-data">
-				<custom:hiddenInputs excludeParams="name, file, price, description, subcategory, category, color, country, fabricator"/>
-				
+				method="POST" modelAttribute="commodity"
+				enctype="multipart/form-data">
+				<custom:hiddenInputs
+					excludeParams="name, file, price, description, subcategory, category, color, country, fabricator" />
+
 				<div class="form-group">
 					<label for="name"><form:errors path="name" /></label>
 				</div>
@@ -133,6 +135,8 @@
 					<form:input type="text" class="form-control" name="quantity"
 						id="quantity" path="quantity" />
 				</div>
+				<label for="file"><form:errors path="file" /></label>
+
 				<input name="file" type="file" id="picture">
 
 				<button type="submit">Add</button>
@@ -140,7 +144,7 @@
 		</div>
 	</div>
 	<div class="row">
-	<div class="col-md-2 col-md-offset-10 col-xs-12">
+		<div class="col-md-2 col-md-offset-10 col-xs-12">
 			<div class="row">
 				<div class="col-md-6 col-xs-6 text-center">
 					<div class="dropdown">
@@ -228,14 +232,15 @@
 							</td>
 							<td>${commodity.description}</td>
 							<td><img
-								src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}" height="200" width="200"></td>
+								src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}"
+								height="200" width="200"></td>
 						</tr>
 					</c:forEach>
-					
+
 				</tbody>
 			</table>
 		</div>
-		
+
 	</div>
 </div>
 <div class="row">

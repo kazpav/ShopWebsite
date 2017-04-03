@@ -10,7 +10,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	</welcome-file-list>
 
 	<session-config>
-		<session-timeout>1</session-timeout>
+		<session-timeout>10</session-timeout>
 	</session-config>
 
 	<servlet>

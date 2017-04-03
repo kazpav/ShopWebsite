@@ -31,7 +31,7 @@ import ua.website.validator.PurchaseContactValidator;
 
 @Controller
 @RequestMapping("/confirmpurchase")
-@SessionAttributes("form")
+//@SessionAttributes("form")
 public class ConfirmPurchaseController {
 
 	@Autowired
@@ -66,7 +66,7 @@ public class ConfirmPurchaseController {
 	public String savePurchaseContact(
 			@ModelAttribute("form")@Valid PurchaseContactForm purchaseContactForm,
 			BindingResult br, Model model,
-			Principal principal, SessionStatus sessionStatus) {
+			Principal principal/*, SessionStatus sessionStatus*/) {
 		if (principal != null) {
 			if(br.hasErrors()) return show(model, principal);
 			PurchaseContact pc = purchaseContactService
@@ -78,7 +78,7 @@ public class ConfirmPurchaseController {
 			userCommodityService.confirmPurchase(list, pc);
 
 		}
-		sessionStatus.setComplete();
+//		sessionStatus.setComplete();
 		return "redirect:/";
 	}
 }

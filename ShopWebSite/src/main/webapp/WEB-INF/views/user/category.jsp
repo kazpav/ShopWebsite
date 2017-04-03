@@ -34,7 +34,7 @@
 									</h3>
 									</p>
 									<p>
-										<b>Price:</b> ${commodity.price}
+										<b>Price:</b> ${commodity.price} UAH
 									</p>
 									<p>
 										<b>Category:</b> ${commodity.category.name}

@@ -31,8 +31,8 @@ public class CommodityValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "quantity", "", "quantity can't be empty");
 		if(!REG.matcher(form.getPrice()).matches()){
 			errors.rejectValue("price", "", "Must be separated by . or , also only numbers");
-		}else if(commodityService.findByName(form.getName())!=null){
-			errors.rejectValue("name", "", "such commodity already exists");
+		}else if(form.getFile()==null){
+			errors.rejectValue("file", "", "You forgot about picture");
 		}
 	}
 	

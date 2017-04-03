@@ -12,10 +12,9 @@
 			<div class="col-md-4 col-md-offset-1">
 				<div class="row">
 					<c:forEach items="${userCommodities}" var="userCommodity">
-						<p>${userCommodity.user.name}--
-							--- ${userCommodity.commodity.name} .Number =
-							${userCommodity.number} <a class="btn btn-danger"
-								href="/basket/delete/${userCommodity.id}">delete</a>
+						<p><b>Commodity:</b>
+							${userCommodity.commodity.name} <br> <b>Number:</b>
+							${userCommodity.number}
 						</p>
 					</c:forEach>
 				</div>
