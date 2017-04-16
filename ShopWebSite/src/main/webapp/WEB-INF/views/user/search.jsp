@@ -56,7 +56,7 @@
 										placeholder="Name" />
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group"x`>
 								<div class="col-sm-6">
 									<form:input path="min" class="form-control" placeholder="Min" />
 								</div>

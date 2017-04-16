@@ -1,16 +1,12 @@
 package ua.website.controller.user;
 
-import java.security.Principal;
-
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import ua.website.entity.User;
 import ua.website.service.CategoryService;
 import ua.website.service.CommodityService;
 import ua.website.service.CountryService;
@@ -32,13 +28,12 @@ public class IndexController {
 	@Autowired
 	private CountryService countryService;
 	
-	
+	private static final Logger logger = LogManager.getLogger(IndexController.class.getName());
 	
 	@RequestMapping("/")
-	public String index(Model model/*, Principal principal*/){
-//		if(principal!=null){
-//			System.out.println(principal.getName());
-//		}
+	public String index(Model model){
+		logger.info("Index loaded");
+		logger.trace("trace");
 		model.addAttribute("categories", categoryService.findAll());
 		return "user-index";
 	}

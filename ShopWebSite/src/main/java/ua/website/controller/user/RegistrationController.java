@@ -47,6 +47,7 @@ public class RegistrationController {
 			BindingResult br, Model model, SessionStatus sessionStatus) {
 		if (br.hasErrors())
 			return "user-registration";
+		
 		userService.save(user);
 		mailSendingService.sendMail("Welcome to our shop", user.getEmail(), "Thanks for choosing our shop for buying equipment.");
 		sessionStatus.setComplete();

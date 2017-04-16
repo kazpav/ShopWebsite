@@ -17,4 +17,6 @@ public interface UserService {
 	User findByEmail(String email);
 //	User fetchUserWithCommod(String name);
 //	public void addCommodityToUser(int UserId, int CommodId);
+	
+	int createNewUser();
 }

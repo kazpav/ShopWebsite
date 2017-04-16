@@ -79,6 +79,13 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 			userDao.save(user);
 		}
 	}
+
+	@Override
+	public int createNewUser() {
+		User user = new User();
+		user.setRole(Role.ROLE_UNREGISTERED);
+		return userDao.saveAndFlush(user).getId();
+	}
 	
 //	public void addCommodityToUser(int UserId, int CommodId){
 //		User user = userDao.findOne(UserId);
