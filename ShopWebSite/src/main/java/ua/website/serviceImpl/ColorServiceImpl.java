@@ -43,7 +43,6 @@ public class ColorServiceImpl implements ColorService{
 		return colorDao.findByName(name);
 	}
 
-	@Override
 	public Page<Color> findAll(SimpleFilter filter, Pageable pageable) {
 		return colorDao.findAll(findByNameLike(filter),pageable);
 	}

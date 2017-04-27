@@ -19,7 +19,6 @@ import ua.website.service.MailSendingService;
 @Service
 public class MailSendingServiceImpl implements MailSendingService{
 
-	@Override
 	public void sendMail(String content, String email, String mailBody) {
 		Properties properties = System.getProperties();
 
@@ -44,8 +43,8 @@ public class MailSendingServiceImpl implements MailSendingService{
 			message.setSubject(content, "UTF-8");
 			message.setText(mailBody);
 			Transport.send(message);
-		} catch (MessagingException å) {
-			å.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
 		}
 	}
 }

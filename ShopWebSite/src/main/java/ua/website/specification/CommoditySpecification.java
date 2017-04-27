@@ -18,7 +18,7 @@ import ua.website.entity.Commodity;
 public class CommoditySpecification implements Specification<Commodity>{
 	private final CommodityFilter filter;
 	
-	private final List<Predicate> predicates = new ArrayList<>();
+	private final List<Predicate> predicates = new ArrayList<Predicate>();
 	
 	private static final Pattern REG = Pattern.compile("^([0-9]{1,17}\\.[0-9]{1,2})|([0-9]{1,17}\\,[0-9]{1,2})|([0-9]{1,17})$");
 
