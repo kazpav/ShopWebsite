@@ -53,6 +53,7 @@ public class CategoryController {
 	@GetMapping
 	public String show(Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
 		model.addAttribute("page", categoryService.findAll(filter,pageable));
+		model.addAttribute("categories", categoryService.findAll());
 		return "admin-categoryModer";
 	}
 

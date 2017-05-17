@@ -1,15 +1,9 @@
 package ua.website.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -22,6 +16,16 @@ public class Category {
 	
 	@Column(name="_name")
 	private String name;
+
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	private Category parent;
+//
+//	@OneToMany(mappedBy = "parent")
+//	private List<Category> childs = new ArrayList<>();
+//
+//	private boolean haveChilds;
+//
+//	private int level;
 	
 
 	@OneToMany(mappedBy="category", fetch=FetchType.LAZY)
