@@ -1,6 +1,8 @@
 package ua.website.serviceImpl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +127,22 @@ public class CommodityServiceImpl implements CommodityService{
 	public Page<Commodity> findAll(Pageable pageable, CommodityFilter filter) {
 		return commDao.findAll(new CommoditySpecification(filter), pageable);
 	}
+
+	@Override
+	public List<Commodity> getRandomCommodities(int quantityOfCommodities) {
+		List<Commodity> commodityList = commDao.findAll();
+		List<Integer> numbers = new ArrayList<Integer>();
+		List<Commodity> randomCommodities = new ArrayList<Commodity>();
+		for (int i=0;i<commodityList.size();i++){
+			numbers.add(new Integer(i));
+		}
+		Collections.shuffle(numbers);
+		for(int i=0;i<quantityOfCommodities;i++){
+			randomCommodities.add(commodityList.get(numbers.get(i)));
+		}
+		return randomCommodities;
+	}
+
 	@Override
 	public void save(Commodity commodity) {
 		commDao.save(commodity);

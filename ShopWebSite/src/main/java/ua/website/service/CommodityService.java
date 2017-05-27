@@ -27,4 +27,5 @@ public interface CommodityService {
 	List<Commodity> findByCategoryId(int id);
 	Commodity findByName(String name);
 	Page<Commodity> findAll(Pageable pageable, CommodityFilter filter);
+	List<Commodity> getRandomCommodities(int quantityOfCommodities);
 }

@@ -35,6 +35,7 @@ public class IndexController {
 		logger.info("Index loaded");
 		logger.trace("trace");
 		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("randomCommodities",commodityService.getRandomCommodities(5));
 		return "user-index";
 	}
 	

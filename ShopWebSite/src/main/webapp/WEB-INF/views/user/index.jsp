@@ -42,11 +42,9 @@
                     <div class="col-md-12">
                         <div class="slider">
                             <ul>
-                                <li><img src="i/1.jpg" alt=""></li>
-                                <li><img src="i/2.jpg" alt=""></li>
-                                <li><img src="i/3.jpg" alt=""></li>
-                                <li><img src="i/4.jpg" alt=""></li>
-                                <li><img src="i/5.jpg" alt=""></li>
+                                <c:forEach items="${randomCommodities}" var="commodity">
+                                    <li><img src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}" height="300" width="300"></li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </div>
