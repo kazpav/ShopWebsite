@@ -14,12 +14,12 @@ import java.util.List;
 @Table(name="category")
 public class Category {
 
-	/** Category id used as primary key */
+	/** Category's id used as primary key */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** Category name represented in separate column*/
+	/** Category's name represented in separate column*/
 	@Column(name="_name")
 	private String name;
 
@@ -54,34 +54,34 @@ public class Category {
 	}
 
 	/**
-	 * Getter for Category id
-	 * @return Category id
+	 * Getter for Category's id
+	 * @return Category's id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter for Category id
-	 * Changes Category id
-	 * @param id new Category id
+	 * Setter for Category's id
+	 * Changes Category's id
+	 * @param id new Category's id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter for Category name
-	 * @return Category name
+	 * Getter for Category's name
+	 * @return Category's name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Setter for Category name
-	 * Changes Category name
-	 * @param name new Category name
+	 * Setter for Category's name
+	 * Changes Category's name
+	 * @param name new Category's name
 	 */
 	public void setName(String name) {
 		this.name = name;
