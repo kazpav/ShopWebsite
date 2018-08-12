@@ -73,16 +73,17 @@ public class User implements UserDetails {
 	private List<UserCommodity> userCommodities;
 
 	/**
-	 * Default constructor; initializes a newly created User with empty fields
+	 * Default constructor.
+	 * Initializes a newly created User with empty fields
 	 */
 	public User() {
 	}
 
 	/**
 	 * Constructor; initializes a newly created User with it's fields
-	 * @param name User's name
-	 * @param email User's email
-	 * @param password User's password
+	 * @param name User's new name
+	 * @param email User's new email
+	 * @param password User's new password
 	 */
 	public User(String name, String email, String password) {
 		super();
@@ -222,7 +223,7 @@ public class User implements UserDetails {
 
 	/**
 	 * Generates and returns hash code
-	 * @return hash code for this object
+	 * @return hash code of this object
 	 */
 	@Override
 	public int hashCode() {
@@ -305,8 +306,4 @@ public class User implements UserDetails {
 		return true;
 	}
 
-
-
-	
-	
 }
