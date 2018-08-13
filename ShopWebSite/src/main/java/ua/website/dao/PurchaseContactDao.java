@@ -1,14 +1,20 @@
 package ua.website.dao;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import ua.website.entity.PurchaseContact;
-import ua.website.entity.SaleStatus;
 
+/**
+ * Data Access Object interface provides connection
+ * between PurchaseContact Objects in application and DB
+ * using JpaRepository to make main requests to DataBase
+ * and JpaSpecificationExecutor  to allow execution of Specification
+ * @author Pavel Kazarin
+ * @version 1.0
+ * @see ua.website.entity.Color
+ * @see ua.website.serviceImpl.ColorServiceImpl
+ */
 public interface PurchaseContactDao extends JpaRepository<PurchaseContact, Integer>{
-//	@Query("SELECT p FROM PurchaseContact p LEFT JOIN FETCH p.userCommodities WHERE p.userCommodity.status=?1")
-//	List<PurchaseContact> findPurchasesByStatus(SaleStatus status);
+
 }

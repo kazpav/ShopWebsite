@@ -6,16 +6,18 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import ua.website.entity.Country;
 
+/**
+ * Data Access Object interface provides connection
+ * between Country Objects in application and DB
+ * using JpaRepository to make main requests to DataBase
+ * and JpaSpecificationExecutor  to allow execution of Specification
+ * @author Pavel Kazarin
+ * @version 1.0
+ * @see ua.website.entity.Color
+ * @see ua.website.serviceImpl.ColorServiceImpl
+ */
 public interface CountryDao extends JpaRepository<Country, Integer>, JpaSpecificationExecutor<Country> {
 
 	Country findByName(String name);
-//	public void save(Country country);
-//
-//	public void delete(int id);
-//
-//	public Country findOne(int id);
-//
-//	public List<Country> findAll();
-//	
-//	void update(Country country);
+
 }
