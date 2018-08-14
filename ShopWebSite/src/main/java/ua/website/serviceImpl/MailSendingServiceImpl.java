@@ -15,10 +15,22 @@ import org.springframework.stereotype.Service;
 
 import ua.website.service.MailSendingService;
 
-
+/**
+ * Service  that is responsible for sending messages to {@code Users}
+ * @author Pavel Kazarin
+ * @version 1.0
+ * @see ua.website.serviceImpl.MailSendingServiceImpl
+ */
 @Service
 public class MailSendingServiceImpl implements MailSendingService{
 
+	/**
+	 * Sends emails
+	 * @param content Subject of email
+	 * @param email Recipient of email
+	 * @param mailBody Text of email
+	 */
+	@Override
 	public void sendMail(String content, String email, String mailBody) {
 		Properties properties = System.getProperties();
 
