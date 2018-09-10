@@ -35,25 +35,25 @@ public class User implements UserDetails {
 	/** Generated Serial Version UID*/
 	private static final long serialVersionUID = 2518803236411276944L;
 
-	/** User's id used as primary key*/
+	/** {@code User}'s id used as primary key*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** User's name represented in separate column*/
+	/** {@code User}'s name represented in separate column*/
 	@Column(name="_name")
 	private String name;
 
-	/** User's email represented in separate column*/
+	/** {@code User}'s email represented in separate column*/
 	@Column(name="_email")
 	private String email;
 
-	/** User's password represented in separate column */
+	/** {@code User}'s password represented in separate column */
 	@Column(name="_password")
 	private String password;
 
 	/**
-	 * User's enumerated role used to identify user's opportunities during using website
+	 * {@code User}'s enumerated role used to identify user's opportunities during using website
 	 * @see ua.website.entity.Role
 	 */
 	@Enumerated
@@ -65,8 +65,8 @@ public class User implements UserDetails {
 	private String repeatPassword;
 
 	/** List of purchased commodities
-	 * from UserCommodity adjacent table
-	 * used instead ManyToMany connection
+	 * from {@code UserCommodity} adjacent table
+	 * used for making ManyToMany connection
 	 * @see ua.website.entity.UserCommodity
 	 */
 	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
@@ -74,16 +74,16 @@ public class User implements UserDetails {
 
 	/**
 	 * Default constructor.
-	 * Initializes a newly created User with empty fields
+	 * Initializes a newly created {@code User} with empty fields
 	 */
 	public User() {
 	}
 
 	/**
-	 * Constructor; initializes a newly created User with it's fields
-	 * @param name User's new name
-	 * @param email User's new email
-	 * @param password User's new password
+	 * Constructor; initializes a newly created {@code User} with it's fields
+	 * @param name {@code User}'s new name
+	 * @param email {@code User}'s new email
+	 * @param password {@code User}'s new password
 	 */
 	public User(String name, String email, String password) {
 		super();
@@ -93,76 +93,76 @@ public class User implements UserDetails {
 	}
 
 	/**
-	 * Getter for User's id
-	 * @return this User's id
+	 * Getter for {@code User}'s id
+	 * @return this {@code User}'s id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter for User's id,
-	 * changes this User's id
-	 * @param id this User's new id
+	 * Setter for {@code User}'s id,
+	 * changes this {@code User}'s id
+	 * @param id this {@code User}'s new id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter for User's name
-	 * @return this User's name
+	 * Getter for {@code User}'s name
+	 * @return this {@code User}'s name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Setter for User's name
-	 * changes this User's name
-	 * @param name this User's new name
+	 * Setter for {@code User}'s name
+	 * changes this {@code User}'s name
+	 * @param name this {@code User}'s new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Getter for User's email
-	 * @return this User's email
+	 * Getter for {@code User}'s email
+	 * @return this {@code User}'s email
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * Setter for User's email
-	 * changes this User's email
-	 * @param email this User's new email
+	 * Setter for {@code User}'s email
+	 * changes this {@code User}'s email
+	 * @param email this {@code User}'s new email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * Getter for User's password
-	 * @return this User's password
+	 * Getter for {@code User}'s password
+	 * @return this {@code User}'s password
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * Setter for User's password
-	 * changes this User's password
-	 * @param password this User's new password
+	 * Setter for {@code User}'s password
+	 * changes this {@code User}'s password
+	 * @param password this {@code User}'s new password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * Getter for this User's role
-	 * @return this User's role
+	 * Getter for this {@code User}'s role
+	 * @return this {@code User}'s role
 	 * @see ua.website.entity.Role
 	 */
 	public Role getRole() {
@@ -170,42 +170,42 @@ public class User implements UserDetails {
 	}
 
 	/**
-	 * Setter for this User's role
-	 * changes this User's role
-	 * @param role this User's new role
+	 * Setter for this {@code User}'s role
+	 * changes this {@code User}'s role
+	 * @param role this {@code User}'s new role
 	 */
 	public void setRole(Role role) {
 		this.role = role;
 	}
 
 	/**
-	 * Getter for this User's repeated password
-	 * @return this User's repeated password
+	 * Getter for this {@code User}'s repeated password
+	 * @return this {@code User}'s repeated password
 	 */
 	public String getRepeatPassword() {
 		return repeatPassword;
 	}
 
 	/**
-	 * Setter for this User's repeated password
-	 * changes this User's repeated password
-	 * @param repeatPassword this User's new repeated password
+	 * Setter for this {@code User}'s repeated password
+	 * changes this {@code User}'s repeated password
+	 * @param repeatPassword this {@code User}'s new repeated password
 	 */
 	public void setRepeatPassword(String repeatPassword) {
 		this.repeatPassword = repeatPassword;
 	}
 
 	/**
-	 * Getter for this User's Commodities
-	 * @return List of this User's Commodities
+	 * Getter for this {@code User}'s {@code Commodity}'s
+	 * @return List of this {@code User}'s {@code Commodity}'s
 	 */
 	public List<UserCommodity> getUserCommodities() {
 		return userCommodities;
 	}
 
 	/**
-	 * Setter for this User's Commodities
-	 * @param userCommodities this User's new List of Commodities
+	 * Setter for this {@code User}'s {@code Commodity}'s
+	 * @param userCommodities this {@code User}'s new List of {@code Commodity}'s
 	 */
 	public void setUserCommodities(List<UserCommodity> userCommodities) {
 		this.userCommodities = userCommodities;
@@ -254,7 +254,7 @@ public class User implements UserDetails {
 
 	/**
 	 * Returns the authorities granted to the user.
-	 * @return this User's authorities
+	 * @return this {@code User}'s authorities
 	 */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -263,7 +263,7 @@ public class User implements UserDetails {
 
 	/**
 	 * Returns the username (email in this case) used to authenticate the user.
-	 * @return this User's email
+	 * @return this {@code User}'s email
 	 */
 	@Override
 	public String getUsername() {
@@ -271,7 +271,7 @@ public class User implements UserDetails {
 	}
 
 	/**
-	 * Indicates whether the user's account has expired.
+	 * Indicates whether the {@code User}'s account has expired.
 	 * @return boolean value
 	 */
 	@Override
@@ -280,7 +280,7 @@ public class User implements UserDetails {
 	}
 
 	/**
-	 * Indicates whether the user is locked or unlocked.
+	 * Indicates whether the {@code User} is locked or unlocked.
 	 * @return boolean value
 	 */
 	@Override

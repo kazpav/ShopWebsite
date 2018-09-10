@@ -28,7 +28,7 @@ public class UserCommodity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** number of purchased Commodities */
+	/** number of purchased {@code Commodity}'s */
 	@Column(name="_number")
 	private int number;
 
@@ -40,11 +40,11 @@ public class UserCommodity {
 	@Column(name="_status")
 	private SaleStatus status;
 
-	/** Users in this table */
+	/** {@code User} in this table */
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 
-	/** Commodities in this table */
+	/** {@code Commodity}'s in this table */
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Commodity commodity;
 
@@ -83,32 +83,32 @@ public class UserCommodity {
 	}
 
 	/**
-	 * Getter for User
-	 * @return this user
+	 * Getter for {@code User}
+	 * @return this {@code User}
 	 */
 	public User getUser() {
 		return user;
 	}
 
 	/**
-	 * Setter for User
-	 * @param user new User
+	 * Setter for {@code User}
+	 * @param user new {@code User}
 	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
 	/**
-	 * Getter for Commodity
-	 * @return this Commodity
+	 * Getter for {@code Commodity}
+	 * @return this {@code Commodity}
 	 */
 	public Commodity getCommodity() {
 		return commodity;
 	}
 
 	/**
-	 * Setter for Commodity
-	 * @param commodity new Commodity
+	 * Setter for {@code Commodity}
+	 * @param commodity new {@code Commodity}
 	 */
 	public void setCommodity(Commodity commodity) {
 		this.commodity = commodity;
@@ -147,16 +147,16 @@ public class UserCommodity {
 	}
 
 	/**
-	 * Setter for purchaseContact
-	 * @return purchaseContact
+	 * Setter for {@code PurchaseContact}
+	 * @return {@code PurchaseContact}
 	 */
 	public PurchaseContact getPurchaseContact() {
 		return purchaseContact;
 	}
 
 	/**
-	 * Setter for purchaseContact
-	 * @param purchaseContact new purchaseContact
+	 * Setter for {@code PurchaseContact}
+	 * @param purchaseContact new {@code PurchaseContact}
 	 */
 	public void setPurchaseContact(PurchaseContact purchaseContact) {
 		this.purchaseContact = purchaseContact;

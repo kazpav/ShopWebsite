@@ -23,68 +23,68 @@ import javax.persistence.Table;
 @Table(name="commodity")
 public class Commodity {
 
-	/** Commodity's id used as primary key */
+	/** {@code Commodity}'s id used as primary key */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** Commodity's name represented in separate column*/
+	/** {@code Commodity}'s name represented in separate column*/
 	@Column(name="_name")
 	private String name;
 
-	/** Commodity's price represented in separate column*/
+	/** {@code Commodity}'s price represented in separate column*/
 	@Column(name="_price")
 	private BigDecimal price;
 
-	/** Commodity's description represented in separate column */
+	/** {@code Commodity}'s description represented in separate column */
 	@Column(name="_description")
 	private String description;
 
-	/** Commodity's version of picture represented in seperate column */
+	/** {@code Commodity}'s version of picture represented in seperate column */
 	@Column(name="_version")
 	private int version;
 
-	/** Quantity of this Commodity that is available in shop */
+	/** Quantity of this {@code Commodity} that is available in shop */
 	@Column(name="_quantity")
 	private int quantity;
 
 	/**
-	 *  Country, where this commodity was manufactured
+	 *  Country, where this {@code Commodity} was manufactured
 	 * @see ua.website.entity.Country
 	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Country country;
 
 	/**
-	 * Color of this Commodity
+	 * Color of this {@code Commodity}
 	 * @see ua.website.entity.Color
 	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Color color;
 
 	/**
-	 * Subcategory of this Commodity
+	 * Subcategory of this {@code Commodity}
 	 * @see ua.website.entity.Subcategory
 	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Subcategory subcategory;
 
 	/**
-	 * Category of this Commodity
+	 * Category of this {@code Commodity}
 	 * @see ua.website.entity.Category
 	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Category category;
 
 	/**
-	 * Fabricator of this Commodity
+	 * Fabricator of this {@code Commodity}
 	 * @see ua.website.entity.Fabricator
 	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Fabricator fabricator;
 
 	/** List of purchased commodities
-	 * from UserCommodity adjacent table
+	 * from {@code UserCommodity} adjacent table
 	 * used instead ManyToMany connection
 	 * @see ua.website.entity.UserCommodity
 	 */
@@ -93,17 +93,17 @@ public class Commodity {
 
 	/**
 	 * Default constructor.
-	 * Initializes a newly created Commodity with empty fields
+	 * Initializes a newly created {@code Commodity} with empty fields
 	 */
 	public Commodity() {
 	}
 
 	/**
-	 * Constructor; initializes a newly created User with it's fields
-	 * @param name Commodity's name
-	 * @param price Commodity's price
-	 * @param description Commodity's description
-	 * @param quantity quantity of Commodities
+	 * Constructor; initializes a newly created {@code Commodity} with it's fields
+	 * @param name {@code Commodity}'s name
+	 * @param price {@code Commodity}'s price
+	 * @param description {@code Commodity}'s description
+	 * @param quantity quantity of {@code Commodity}'s
 	 */
 	public Commodity(String name, BigDecimal price, String description, int quantity) {
 	this.name = name;
@@ -113,187 +113,187 @@ public class Commodity {
 	}
 
 	/**
-	 * Getter for Commodity's id
-	 * @return this Commodity's id
+	 * Getter for {@code Commodity}'s id
+	 * @return this {@code Commodity}'s id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter for Commodity's id,
-	 * changes this Commodity's id
-	 * @param id this Commodity's new id
+	 * Setter for {@code Commodity}'s id,
+	 * changes this {@code Commodity}'s id
+	 * @param id this {@code Commodity}'s new id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter for Commodity's name
-	 * @return this Commodity's name
+	 * Getter for {@code Commodity}'s name
+	 * @return this {@code Commodity}'s name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Setter for Commodity's name,
-	 * changes this Commodity's name
-	 * @param name this Commodity's new name
+	 * Setter for {@code Commodity}'s name,
+	 * changes this {@code Commodity}'s name
+	 * @param name this {@code Commodity}'s new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Getter for Commodity's version of picture
-	 * @return this Commodity's version of picture
+	 * Getter for {@code Commodity}'s version of picture
+	 * @return this {@code Commodity}'s version of picture
 	 */
 	public int getVersion() {
 		return version;
 	}
 
 	/**
-	 * Setter for Commodity's version of picture,
-	 * changes this Commodity's version of picture
-	 * @param version this Commodity's new version of picture
+	 * Setter for {@code Commodity}'s version of picture,
+	 * changes this {@code Commodity}'s version of picture
+	 * @param version this {@code Commodity}'s new version of picture
 	 */
 	public void setVersion(int version) {
 		this.version = version;
 	}
 
 	/**
-	 * Getter for Commodity's price
-	 * @return this Commodity's price
+	 * Getter for {@code Commodity}'s price
+	 * @return this {@code Commodity}'s price
 	 */
 	public BigDecimal getPrice() {
 		return price;
 	}
 
 	/**
-	 * Setter for Commodity's price,
-	 * changes this Commodity's price
-	 * @param price this Commodity's new price
+	 * Setter for {@code Commodity}'s price,
+	 * changes this {@code Commodity}'s price
+	 * @param price this {@code Commodity}'s new price
 	 */
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
 	/**
-	 * Getter for Commodity's description
-	 * @return this Commodity's description
+	 * Getter for {@code Commodity}'s description
+	 * @return this {@code Commodity}'s description
 	 */
 	public String getDescription() {
 		return description;
 	}
 
 	/**
-	 * Setter for Commodity's description,
-	 * changes this Commodity's description
-	 * @param description this Commodity's new description
+	 * Setter for {@code Commodity}'s description,
+	 * changes this {@code Commodity}'s description
+	 * @param description this {@code Commodity}'s new description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	/**
-	 * Getter for quantity of Commodities
-	 * @return quantity of this Commodities
+	 * Getter for quantity of {@code Commodity}'s
+	 * @return quantity of this {@code Commodity}'s
 	 */
 	public int getQuantity() {
 		return quantity;
 	}
 
 	/**
-	 * Setter for quantity of Commodities,
-	 * changes quantity of this Commodity
-	 * @param quantity new quantity of this Commodity
+	 * Setter for quantity of {@code Commodity}'s,
+	 * changes quantity of this {@code Commodity}
+	 * @param quantity new quantity of this {@code Commodity}
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
 	/**
-	 * Getter for Commodity's Country
-	 * @return this Commodity's Country
+	 * Getter for {@code Commodity}'s {@code Country}
+	 * @return this {@code Commodity}'s {@code Country}
 	 */
 	public Country getCountry() {
 		return country;
 	}
 
 	/**
-	 * Setter for Commodity's Country,
-	 * changes this Commodity's Country
-	 * @param country this Commodity's new Country
+	 * Setter for {@code Commodity}'s {@code Country},
+	 * changes this {@code Commodity}'s {@code Country}
+	 * @param country this {@code Commodity}'s new {@code Country}
 	 */
 	public void setCountry(Country country) {
 		this.country = country;
 	}
 
 	/**
-	 * Getter for Commodity's Color
-	 * @return this Commodity's Color
+	 * Getter for {@code Commodity}'s {@code Color}
+	 * @return this {@code Commodity}'s {@code Color}
 	 */
 	public Color getColor() {
 		return color;
 	}
 
 	/**
-	 * Setter for Commodity's Color,
-	 * changes this Commodity's Color
-	 * @param color this Commodity's new Color
+	 * Setter for {@code Commodity}'s {@code Color},
+	 * changes this {@code Commodity}'s {@code Color}
+	 * @param color this {@code Commodity}'s new {@code Color}
 	 */
 	public void setColor(Color color) {
 		this.color = color;
 	}
 
 	/**
-	 * Getter for Commodity's Subcategory
-	 * @return this Commodity's Subcategory
+	 * Getter for {@code Commodity}'s {@code Subcategory}
+	 * @return this {@code Commodity}'s {@code Subcategory}
 	 */
 	public Subcategory getSubcategory() {
 		return subcategory;
 	}
 
 	/**
-	 * Setter for Commodity's Subcategory,
-	 * changes this Commodity's Subcategory
-	 * @param subcategory this Commodity's new Subcategory
+	 * Setter for {@code Commodity}'s {@code Subcategory},
+	 * changes this {@code Commodity}'s {@code Subcategory}
+	 * @param subcategory this {@code Commodity}'s new {@code Subcategory}
 	 */
 	public void setSubcategory(Subcategory subcategory) {
 		this.subcategory = subcategory;
 	}
 
 	/**
-	 * Getter for Commodity's Category
-	 * @return this Commodity's Category
+	 * Getter for {@code Commodity}'s {@code Category}
+	 * @return this {@code Commodity}'s {@code Category}
 	 */
 	public Category getCategory() {
 		return category;
 	}
 
 	/**
-	 * Setter for Commodity's Category,
-	 * changes this Commodity's Category
-	 * @param category this Commodity's new Category
+	 * Setter for {@code Commodity}'s {@code Category},
+	 * changes this {@code Commodity}'s {@code Category}
+	 * @param category this {@code Commodity}'s new {@code Category}
 	 */
 	public void setCategory(Category category) {
 		this.category = category;
 	}
 
 	/**
-	 * Getter for Commodity's Fabricator
-	 * @return this Commodity's Fabricator
+	 * Getter for {@code Commodity}'s {@code Fabricator@code
+	 * @return this {@code Commodity}'s {@code Fabricator}
 	 */
 	public Fabricator getFabricator() {
 		return fabricator;
 	}
 
 	/**
-	 * Setter for Commodity's Fabricator,
-	 * changes this Commodity's Fabricator
-	 * @param fabricator this Commodity's new Fabricator
+	 * Setter for {@code Commodity}'s {@code Fabricator},
+	 * changes this {@code Commodity}'s {@code Fabricator}
+	 * @param fabricator this {@code Commodity}'s new {@code Fabricator}
 	 */
 	public void setFabricator(Fabricator fabricator) {
 		this.fabricator = fabricator;

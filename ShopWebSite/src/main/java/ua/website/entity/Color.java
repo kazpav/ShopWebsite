@@ -22,17 +22,17 @@ import javax.persistence.Table;
 @Table(name="color")
 public class Color {
 
-	/** Color's id used as primary key */
+	/** {@code Color}'s id used as primary key */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** Color's name represented in separate column*/
+	/** {@code Color}'s name represented in separate column*/
 	@Column
 	private String name;
 
 	/**
-	 * List of Commodities that relates to this Color
+	 * List of {@code Commodity}'s that relates to this Color
 	 * @see ua.website.entity.Commodity
 	 */
 	@OneToMany(mappedBy="color", fetch=FetchType.LAZY)
@@ -40,13 +40,13 @@ public class Color {
 
 	/**
 	 *  Default constructor.
-	 *  Initializes a newly created Color with empty fields
+	 *  Initializes a newly created {@code Color} with empty fields
 	 */
 	public Color() {
 	}
 
 	/**
-	 * Constructor; initializes a newly created Color with it's fields
+	 * Constructor; initializes a newly created {@code Color} with it's fields
 	 * @param name Color new name
 	 */
 	public Color(String name) {
@@ -55,51 +55,51 @@ public class Color {
 	}
 
 	/**
-	 * Getter for Color's id
-	 * @return Color's id
+	 * Getter for {@code Color}'s id
+	 * @return {@code Color}'s id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter for Color's id
-	 * Changes Color's id
-	 * @param id new Color's id
+	 * Setter for {@code Color}'s id
+	 * Changes {@code Color}'s id
+	 * @param id new {@code Color}'s id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter for Color's name
-	 * @return Color's name
+	 * Getter for {@code Color}'s name
+	 * @return {@code Color}'s name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Setter for Color's name
-	 * Changes Color's name
-	 * @param name new Color's name
+	 * Setter for {@code Color}'s name
+	 * Changes {@code Color}'s name
+	 * @param name new {@code Color}'s name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Getter for List of Color's Commodities
-	 * @return List of Color's Commodities
+	 * Getter for List of {@code Color}'s {@code Commodity}'s
+	 * @return List of {@code Color}'s {@code Commodity}'s
 	 */
 	public List<Commodity> getCommodities() {
 		return commodities;
 	}
 
 	/**
-	 * Setter for Color's List of Commodities
-	 * Changes List of Commodities that relates to this Color
-	 * @param commodities List of new Color's Commodities
+	 * Setter for {@code Color}'s List of {@code Commodity}'s
+	 * Changes List of {@code Commodity}'s that relates to this {@code Color}
+	 * @param commodities List of new {@code Color}'s {@code Commodity}'s
 	 */
 	public void setCommodities(List<Commodity> commodities) {
 		this.commodities = commodities;

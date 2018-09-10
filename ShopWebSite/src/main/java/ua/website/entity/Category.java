@@ -14,24 +14,24 @@ import java.util.List;
 @Table(name="category")
 public class Category {
 
-	/** Category's id used as primary key */
+	/** {@code Category}'s id used as primary key */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** Category's name represented in separate column*/
+	/** {@code Category}'s name represented in separate column*/
 	@Column(name="_name")
 	private String name;
 
 	/**
-	 *  List of Subcategories that relates to this Category
+	 *  List of {@code Subcategory}'s that relates to this {@code Category}
 	 * @see ua.website.entity.Subcategory
 	 */
 	@OneToMany(mappedBy="category", fetch=FetchType.LAZY)
 	private List<Subcategory> subcategories;
 
 	/**
-	 * List of Commodities that relates to this Category
+	 * List of {@code Commodity}'s that relates to this {@code Category}
 	 * @see ua.website.entity.Commodity
 	 */
 	@OneToMany(mappedBy="category", fetch=FetchType.LAZY)
@@ -39,14 +39,14 @@ public class Category {
 
 	/**
 	 *  Default constructor.
-	 *  Initializes a newly created Category with empty fields
+	 *  Initializes a newly created {@code Category} with empty fields
 	 */
 	public Category() {
 	}
 
 	/**
-	 * Constructor; initializes a newly created Category with it's fields
-	 * @param name Category new name
+	 * Constructor; initializes a newly created {@code Category} with it's fields
+	 * @param name {@code Category}'s new name
 	 */
 	public Category(String name) {
 		super();
@@ -54,68 +54,68 @@ public class Category {
 	}
 
 	/**
-	 * Getter for Category's id
-	 * @return Category's id
+	 * Getter for {@code Category}'s id
+	 * @return {@code Category}'s id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter for Category's id
-	 * Changes Category's id
-	 * @param id new Category's id
+	 * Setter for {@code Category}'s id
+	 * Changes {@code Category}'s id
+	 * @param id new {@code Category}'s id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter for Category's name
-	 * @return Category's name
+	 * Getter for {@code Category}'s name
+	 * @return {@code Category}'s name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Setter for Category's name
-	 * Changes Category's name
-	 * @param name new Category's name
+	 * Setter for {@code Category}'s name
+	 * Changes {@code Category}'s name
+	 * @param name new {@code Category}'s name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Getter for List of Category's Subcategories
-	 * @return List of Category's Subcategories
+	 * Getter for List of {@code Category}'s Subcategories
+	 * @return List of {@code Category}'s Subcategories
 	 */
 	public List<Subcategory> getSubcategories() {
 		return subcategories;
 	}
 
 	/**
-	 * Setter for Category's List of Subcategories
-	 * Changes List of Subcategories that relates to this Category
-	 * @param subcategories List of new Category's Subcategories
+	 * Setter for {@code Category}'s List of {@code Subcategory}'s
+	 * Changes List of {@code Subcategory}'s that relates to this {@code Category}
+	 * @param subcategories List of new {@code Category}'s {@code Subcategory}'s
 	 */
 	public void setSubcategories(List<Subcategory> subcategories) {
 		this.subcategories = subcategories;
 	}
 
 	/**
-	 * Getter for List of Category's Commodities
-	 * @return List of Category's Commodities
+	 * Getter for List of {@code Category}'s {@code Commodity}
+	 * @return List of {@code Category}'s {@code Commodity}'s
 	 */
 	public List<Commodity> getCommodities() {
 		return commodities;
 	}
 
 	/**
-	 * Setter for Category's List of Commodities
-	 * Changes List of Commodities that relates to this Category
-	 * @param commodities List of new Category's Commodities
+	 * Setter for {@code Category}'s List of {@code Commodity}'s
+	 * Changes List of {@code Commodity}'s that relates to this {@code Category}
+	 * @param commodities List of new {@code Category}'s {@code Commodity}'s
 	 */
 	public void setCommodities(List<Commodity> commodities) {
 		this.commodities = commodities;

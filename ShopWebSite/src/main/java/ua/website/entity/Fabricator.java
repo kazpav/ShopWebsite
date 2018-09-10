@@ -23,17 +23,17 @@ import javax.persistence.Table;
 @Table(name="fabricator")
 public class Fabricator {
 
-	/** Fabricator's id used as primary key */
+	/** {@code Fabricator}'s id used as primary key */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** Fabricator's name represented in separate column*/
+	/** {@code Fabricator}'s name represented in separate column*/
 	@Column(name="_name")
 	private String name;
 
 	/**
-	 * List of Commodities that relates to this Fabricator
+	 * List of {@code Commodity}'s that relates to this {@code Fabricator}
 	 * @see ua.website.entity.Commodity
 	 */
 	@OneToMany(mappedBy="fabricator", fetch=FetchType.LAZY)
@@ -41,15 +41,15 @@ public class Fabricator {
 
 	/**
 	 *  Default constructor.
-	 *  Initializes a newly created Fabricator with empty fields
+	 *  Initializes a newly created {@code Fabricator} with empty fields
 	 */
 	public Fabricator() {
 
 	}
 
 	/**
-	 * Constructor; initializes a newly created Fabricator with it's fields
-	 * @param name Color new name
+	 * Constructor; initializes a newly created {@code Fabricator} with it's fields
+	 * @param name {@code Fabricator}'s new name
 	 */
 	public Fabricator(String name) {
 		super();
@@ -57,51 +57,51 @@ public class Fabricator {
 	}
 
 	/**
-	 * Getter for Fabricator's id
-	 * @return Fabricator's id
+	 * Getter for {@code Fabricator}'s id
+	 * @return {@code Fabricator}'s id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter for Fabricator's id
-	 * Changes Fabricator's id
-	 * @param id new Fabricator's id
+	 * Setter for {@code Fabricator}'s id
+	 * Changes {@code Fabricator}'s id
+	 * @param id new {@code Fabricator}'s id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter for Fabricator's name
-	 * @return Fabricator's name
+	 * Getter for {@code Fabricator}'s name
+	 * @return {@code Fabricator}'s name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Setter for Fabricator's name
-	 * Changes Fabricator's name
-	 * @param name new Fabricator's name
+	 * Setter for {@code Fabricator}'s name
+	 * Changes {@code Fabricator}'s name
+	 * @param name new {@code Fabricator}'s name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Getter for List of Fabricator's Commodities
-	 * @return List of Fabricator's Commodities
+	 * Getter for List of {@code Fabricator}'s {@code Commodity}'s
+	 * @return List of {@code Fabricator}'s {@code Commodity}'s
 	 */
 	public List<Commodity> getCommodities() {
 		return commodities;
 	}
 
 	/**
-	 * Setter for Fabricator's List of Commodities
-	 * Changes List of Commodities that relates to this Fabricator
-	 * @param commodities List of new Fabricator's Commodities
+	 * Setter for {@code Fabricator}'s List of {@Commodity}'s
+	 * Changes List of {@code Commodity}'s that relates to this {@code Fabricator}
+	 * @param commodities List of new {@code Fabricator}'s {@code Commodity}'s
 	 */
 	public void setCommodities(List<Commodity> commodities) {
 		this.commodities = commodities;

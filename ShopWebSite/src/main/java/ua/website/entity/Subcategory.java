@@ -21,29 +21,29 @@ import javax.persistence.Table;
 @Table(name="subcategory")
 public class Subcategory {
 
-	/** Subcategory's id used as primary key */
+	/** {@code Subcategory}'s id used as primary key */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	/** Subcategory's name represented in separate column*/
+	/** {@code Subcategory}'s name represented in separate column*/
 	@Column(name="_name")
 	private String name;
 
-	/** Category related to this Subcategory */
+	/** {@code Category} related to this {@code Subcategory}*/
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Category category;
 
 	/**
 	 *  Default constructor.
-	 *  Initializes a newly created Subcategory with empty fields
+	 *  Initializes a newly created {@code Subcategory} with empty fields
 	 */
 	public Subcategory() {
 	}
 
 	/**
-	 * Constructor; initializes a newly created Subcategory with it's fields
-	 * @param name Subcategory's new name
+	 * Constructor; initializes a newly created {@code Subcategory} with it's fields
+	 * @param name {@code Subcategory}'s new name
 	 */
 	public Subcategory(String name) {
 		super();
@@ -51,51 +51,51 @@ public class Subcategory {
 	}
 
 	/**
-	 * Getter for Subcategory's id
-	 * @return Subcategory's id
+	 * Getter for {@code Subcategory}'s id
+	 * @return {@code Subcategory}'s id
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter for Subcategory's id
-	 * Changes Subcategory's id
-	 * @param id new Subcategory's id
+	 * Setter for {@code Subcategory}'s id
+	 * Changes {@code Subcategory}'s id
+	 * @param id new {@code Subcategory}'s id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter for Subcategory's name
-	 * @return Subcategory's name
+	 * Getter for {@code Subcategory}'s name
+	 * @return {@code Subcategory}'s name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Setter for Subcategory's name
-	 * Changes Subcategory's name
-	 * @param name new Subcategory's name
+	 * Setter for {@code Subcategory}'s name
+	 * Changes {@code Subcategory}'s name
+	 * @param name new {@code Subcategory}'s name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Getter for Subcategory's Caregory
-	 * @return Subcategory's Caregory
+	 * Getter for {@code Subcategory}'s {@code Category}
+	 * @return {@code Subcategory}'s {@code Category}
 	 */
 	public Category getCategory() {
 		return category;
 	}
 
 	/**
-	 * Setter for Subcategory's Category
-	 * Changes Subcategory's Category
-	 * @param category new Subcategory's Category
+	 * Setter for {@code Subcategory}'s {@code Category}
+	 * Changes {@code Subcategory}'s {@code Category}
+	 * @param category new {@code Subcategory}'s {@code Category}
 	 */
 	public void setCategory(Category category) {
 		this.category = category;
