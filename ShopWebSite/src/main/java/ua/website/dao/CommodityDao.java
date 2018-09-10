@@ -13,7 +13,7 @@ import ua.website.entity.Commodity;
 
 /**
  * Data Access Object interface provides connection
- * between Commodity Objects in application and DB
+ * between {@code Commodity} Objects in application and DB
  * using JpaRepository to make main requests to DataBase,
  *  JpaSpecificationExecutor  to allow execution of Specification
  *  and  queries
@@ -25,9 +25,9 @@ import ua.website.entity.Commodity;
 public interface CommodityDao extends JpaRepository<Commodity, Integer>, JpaSpecificationExecutor<Commodity> {
 
 	/**
-	 * Finds Commodities that are related to Category specified in param
-	 * @param id id of Category
-	 * @return List of Commodities related to some Category
+	 * Finds {@code Commodity}'s that are related to {@code Category} specified in param
+	 * @param id id of {@code Category}
+	 * @return List of {@code Commodity}'s related to some {@code Category}
 	 */
 	@Query("SELECT c FROM Commodity c LEFT JOIN FETCH c.color LEFT JOIN FETCH c.country"
 			+ " LEFT JOIN FETCH c.fabricator LEFT JOIN FETCH c.subcategory LEFT JOIN FETCH c.category"
@@ -35,33 +35,33 @@ public interface CommodityDao extends JpaRepository<Commodity, Integer>, JpaSpec
 	List<Commodity> findByCategoryId(int id);
 
 	/**
-	 * Finds all Commodities in DataBase
-	 * @return list of all Commodities
+	 * Finds all {@code Commodity}'s in DataBase
+	 * @return list of all {@code Commodity}'s
 	 */
 	@Query("SELECT c FROM Commodity c LEFT JOIN FETCH c.color LEFT JOIN FETCH c.country"
 			+ " LEFT JOIN FETCH c.fabricator LEFT JOIN FETCH c.subcategory LEFT JOIN FETCH c.category")
 	List<Commodity> findAll();
 
 	/**
-	 * Finds Commodity with same id as parameter
-	 * @param id Commodity's id you want to find
-	 * @return Commodity Object
+	 * Finds {@code Commodity} with same id as parameter
+	 * @param id {@code Commodity}'s id you want to find
+	 * @return {@code Commodity} Object
 	 */
 	@Query("SELECT c FROM Commodity c LEFT JOIN FETCH c.color LEFT JOIN FETCH c.country"
 			+ " LEFT JOIN FETCH c.fabricator LEFT JOIN FETCH c.subcategory LEFT JOIN FETCH c.category WHERE c.id=?1")
 	Commodity findOne(int id);
 
 	/**
-	 * Finds Commodity with same name as param String
-	 * @param name Name of Commodity we are looking for
-	 * @return found Commodity
+	 * Finds {@code Commodity} with same name as param String
+	 * @param name Name of {@code Commodity} we are looking for
+	 * @return found {@code Commodity}
 	 */
 	Commodity findByName(String name);
 
 	/**
-	 * Finds all Commodities representing them in Page perspective
+	 * Finds all {@code Commodity}'s representing them in Page perspective
 	 * @param pageable
-	 * @return Pages of Commodities
+	 * @return Pages of {@code Commodity}
 	 */
 	@Query(value="SELECT c FROM Commodity c LEFT JOIN FETCH c.color LEFT JOIN FETCH c.country"
 			+ " LEFT JOIN FETCH c.fabricator LEFT JOIN FETCH c.subcategory LEFT JOIN FETCH c.category",

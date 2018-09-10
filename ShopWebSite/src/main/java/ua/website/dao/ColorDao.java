@@ -8,7 +8,7 @@ import ua.website.entity.Color;
 
 /**
  * Data Access Object interface provides connection
- * between Color Objects in application and DB
+ * between {@code Color} Objects in application and DB
  * using JpaRepository to make main requests to DataBase
  * and JpaSpecificationExecutor  to allow execution of Specification
  * @author Pavel Kazarin
@@ -18,5 +18,10 @@ import ua.website.entity.Color;
  */
 public interface ColorDao extends JpaRepository<Color, Integer>,JpaSpecificationExecutor<Color> {
 
+	/**
+	 * Finds {@code Color} by it's name
+	 * @param name name of {@code Color} you want to find
+	 * @return found {@code Color}
+	 */
 	Color findByName(String name);
 }

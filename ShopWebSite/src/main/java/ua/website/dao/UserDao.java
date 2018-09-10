@@ -7,7 +7,7 @@ import ua.website.entity.User;
 
 /**
  * Data Access Object interface provides connection
- * between User Objects in application and DB
+ * between {@code User} Objects in application and DB
  * using JpaRepository to make main requests to DataBase,
  *  JpaSpecificationExecutor  to allow execution of Specification
  * @author Pavel Kazarin
@@ -18,16 +18,16 @@ import ua.website.entity.User;
 public interface UserDao extends JpaRepository<User, Integer> {
 
 	/**
-	 * Finds User by name specified in parameter
-	 * @param name User you want to find
-	 * @return found User
+	 * Finds {@code User} by name specified in parameter
+	 * @param name {@code User} you want to find
+	 * @return found {@code User}
 	 */
 	User findByName(String name);
 
 	/**
-	 * Finds User by email specified in parameter
-	 * @param email Email of User you want to find
-	 * @return found User
+	 * Finds {@code User} by email specified in parameter
+	 * @param email Email of {@code User} you want to find
+	 * @return found {@code User}
 	 */
 	User findByEmail(String email);
 }

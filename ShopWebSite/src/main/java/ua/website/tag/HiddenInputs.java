@@ -14,12 +14,20 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+/**
+ * This class builds hidden input tags
+ * @author Pavel Kazarin
+ * @version 1.0
+ */
 public class HiddenInputs extends SimpleTagSupport{
 
+	/** {@code StringWriter} that will be used during tag built*/
 	private final StringWriter sw = new StringWriter();
-	//error in "new ArrayList<>", changed to ArrayList<String>
+
+	/** Container for excludes*/
 	private List<String> excludes = new ArrayList<>();
-	
+
+	/** Tag builder*/
 	@Override
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -40,7 +48,8 @@ public class HiddenInputs extends SimpleTagSupport{
 		}
 		out.println(sw.toString());
 	}
-	
+
+	/** Sets exclude parameters*/
 	public void setExcludeParams(String excludeParams){
 		StringTokenizer tokenizer = new StringTokenizer(excludeParams, ", ");
 		while(tokenizer.hasMoreTokens()){

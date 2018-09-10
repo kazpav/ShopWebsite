@@ -18,28 +18,69 @@ import ua.website.service.FabricatorService;
 import ua.website.service.SubcategoryService;
 import ua.website.util.ParamBuilder;
 
+/**
+ * Controller that will be called on {/search} link;
+ * allows to search for {@code Commodities} with specified properties
+ * @author Pavel Kazarin
+ * @version 1.0
+ * @see ua.website.entity.Commodity
+ * @see ua.website.entity.Subcategory
+ * @see ua.website.entity.Color
+ * @see ua.website.entity.Country
+ * @see ua.website.entity.Category
+ * @see ua.website.entity.Fabricator
+ * @see ua.website.service.CommodityService
+ * @see ua.website.service.SubcategoryService
+ * @see ua.website.service.ColorService
+ * @see ua.website.service.CountryService
+ * @see ua.website.service.FabricatorService
+ * @see ua.website.service.CategoryService
+ * @see ua.website.dto.filter.CommodityFilter
+ */
 @Controller
 @RequestMapping("/search")
 public class SearchController {
-	
+
+	/** Injected {@code CommodityService} used in this Controller*/
 	@Autowired
 	CommodityService commodityService;
+
+	/** Injected {@code SubcategoryService} used in this Controller*/
 	@Autowired
 	SubcategoryService subcategoryService;
+
+	/** Injected {@code ColorService} used in this Controller*/
 	@Autowired
 	ColorService colorService;
+
+	/** Injected {@code CountryService} used in this Controller*/
 	@Autowired
 	CountryService countryService;
+
+	/** Injected {@code FabricatorService} used in this Controller*/
 	@Autowired
 	FabricatorService fabricatorService;
+
+	/** Injected {@code CategoryService} used in this Controller*/
 	@Autowired
 	CategoryService categoryService;
-	
+
+	/**
+	 * This method creates and returns new {@code CommodityFilter}
+	 * @return new {@code CommodityFilter}
+	 */
 	@ModelAttribute("searchFilter")
 	public CommodityFilter getFilter(){
 		return new CommodityFilter();
 	}
-	
+
+	/**
+	 * This method gets all Entities we need during search
+	 * @param model mode we use
+	 * @param pageable Pageable settings
+	 * @param filter used filter
+	 * @return
+	 */
 	@GetMapping
 	public String show(Model model, @PageableDefault Pageable pageable,
 			@ModelAttribute("searchFilter") CommodityFilter filter){
@@ -51,8 +92,14 @@ public class SearchController {
 		model.addAttribute("categories", categoryService.findAll());
 		return "user-search";
 	}
-	
-	
+
+	/**
+	 * This method gets all filtration settings
+	 * to add them to link
+	 * @param pageable Pageable settings
+	 * @param filter filter settings
+	 * @return
+	 */
 	private String getParams(Pageable pageable, CommodityFilter filter) {
 		String page =ParamBuilder.getParams(pageable);
 		StringBuilder builder = new StringBuilder(page);
@@ -92,7 +139,6 @@ public class SearchController {
 				builder.append(id);
 			}
 		}
-
 		if(!filter.getFabricatorId().isEmpty()){
 			for (Integer id : filter.getFabricatorId()) {
 				builder.append("&fabricatorId=");

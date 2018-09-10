@@ -7,7 +7,7 @@ import ua.website.entity.Fabricator;
 
 /**
  * Data Access Object interface provides connection
- * between Fabricator Objects in application and DB
+ * between {@code Fabricator} Objects in application and DB
  * using JpaRepository to make main requests to DataBase
  * and JpaSpecificationExecutor  to allow execution of Specification
  * @author Pavel Kazarin
@@ -17,6 +17,11 @@ import ua.website.entity.Fabricator;
  */
 public interface FabricatorDao extends JpaRepository<Fabricator, Integer>,JpaSpecificationExecutor<Fabricator>{
 
+	/**
+	 * Finds {@code Fabricator} by it's name
+	 * @param name name of {@code Fabricator} you want to find
+	 * @return found {@code Fabricator}
+	 */
 	Fabricator findByName(String name);
 
 }

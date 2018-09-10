@@ -7,7 +7,7 @@ import ua.website.entity.PurchaseContact;
 
 /**
  * Data Access Object interface provides connection
- * between PurchaseContact Objects in application and DB
+ * between {@code PurchaseContact} Objects in application and DB
  * using JpaRepository to make main requests to DataBase
  * and JpaSpecificationExecutor  to allow execution of Specification
  * @author Pavel Kazarin

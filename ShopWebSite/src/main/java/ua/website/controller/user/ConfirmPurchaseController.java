@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 
 import ua.website.dto.form.PurchaseContactForm;
 import ua.website.entity.PurchaseContact;
@@ -29,18 +27,46 @@ import ua.website.service.UserCommodityService;
 import ua.website.service.UserService;
 import ua.website.validator.PurchaseContactValidator;
 
+
+/**
+ * Controller that will be called on {/confirmpurchase} link;
+ * works with {@code @PurchaseContact} Entities
+ * when user gives his contact info
+ * @author Pavel Kazarin
+ * @version 1.0
+ * @see ua.website.entity.User
+ * @see ua.website.entity.PurchaseContact
+ * @see ua.website.entity.UserCommodity
+ * @see ua.website.service.UserCommodityService
+ * @see ua.website.service.PurchaseContactService
+ * @see ua.website.service.UserService
+ * @see ua.website.validator.PurchaseContactValidator
+ * @see ua.website.dto.form.PurchaseContactForm
+ */
 @Controller
 @RequestMapping("/confirmpurchase")
-//@SessionAttributes("form")
 public class ConfirmPurchaseController {
 
+	/** Injected {@code UserCommodityService} used in this Controller*/
 	@Autowired
 	private UserCommodityService userCommodityService;
+
+	/** Injected {@code PurchaseContactService} used in this Controller*/
 	@Autowired
 	private PurchaseContactService purchaseContactService;
+
+	/** Injected {@code UserService} used in this Controller*/
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * This method gets {@code User} information, date information
+	 * and {@code UserCommodity} information that will be used
+	 * to create {@code PurchaseContact} object
+	 * @param model model we use
+	 * @param principal {@code Principal} object to get current {@code User}
+	 * @return
+	 */
 	@GetMapping
 	public String show(Model model,Principal principal){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
@@ -51,17 +77,31 @@ public class ConfirmPurchaseController {
 				userCommodityService.findUserPurchases(id, SaleStatus.STATUS_INBASKET));
 		return "user-confirmpurchase";
 	}
-	
+
+	/** Binds validator for {@PurchaseContact} objects */
 	@InitBinder("form")
 	protected void binder(WebDataBinder binder){
 		binder.setValidator(new PurchaseContactValidator(purchaseContactService));
 	}
-	
+
+	/**
+	 * Creates and returns new empty {@code PurchaseContactForm} object
+	 * @return new empty {@code PurchaseContactForm} object
+	 */
 	@ModelAttribute("form")
 	public PurchaseContactForm getForm() {
 		return new PurchaseContactForm();
 	}
 
+	/**
+	 * This method saves new {@code PurchaseContact} to database
+	 * using Post method
+	 * @param purchaseContactForm {@code PurchaseContact} to save
+	 * @param br {@code BindingResult} object to check for any validation errors
+	 * @param model model we use
+	 * @param principal {@code Principal} object to identify {@code User}
+	 * @return link for redirection
+	 */
 	@PostMapping
 	public String savePurchaseContact(
 			@ModelAttribute("form")@Valid PurchaseContactForm purchaseContactForm,
@@ -76,9 +116,7 @@ public class ConfirmPurchaseController {
 					userService.findByEmail(principal.getName()).getId(),
 					SaleStatus.STATUS_INBASKET);
 			userCommodityService.confirmPurchase(list, pc);
-
 		}
-//		sessionStatus.setComplete();
 		return "redirect:/";
 	}
 }

@@ -12,16 +12,35 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+/**
+ * This class builds sort tags
+ * @author Pavel Kazarin
+ * @version 1.0
+ */
 public class SortTag extends SimpleTagSupport {
 
+	/** {@code StringWriter} that will be used during tag building */
 	private final StringWriter sw = new StringWriter();
+
+	/** Constant for '&' symbol*/
 	private final static String AMPER = "&";
+
+	/** Constant for '?' symbol*/
 	private final static String QUEST = "?";
+
+	/** Constant for '=' symbol*/
 	private final static String EQUAL = "=";
+
+	/** Constant for sort*/
 	private final static String SORT = "sort";
+
+	/** Param Value */
 	private String paramValue = "";
+
+	/** inner html */
 	private String innerHtml = "";
-	
+
+	/** Tag builder */
 	@Override
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -52,7 +71,8 @@ public class SortTag extends SimpleTagSupport {
 		sw.append("</a></li>");
 		out.println(sw.toString());
 	}
-	
+
+	/** Checks if param value is present*/
 	public boolean isParamValuePresent(Map<String, String[]> map){
 		return map.entrySet().stream()
 		.filter(entry->entry.getKey().equals(SORT))
@@ -60,11 +80,13 @@ public class SortTag extends SimpleTagSupport {
 		.flatMap((array)->Arrays.stream(array))
 		.anyMatch((str)->str.equals(paramValue));
 	}
-	
+
+	/** Sets param value */
 	public void setParamValue(String paramValue){
 		this.paramValue = paramValue;
 	}
 
+	/** Sets inner html*/
 	public void setInnerHtml(String innerHtml) {
 		this.innerHtml = innerHtml;
 	}

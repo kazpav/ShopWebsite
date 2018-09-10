@@ -8,7 +8,7 @@ import ua.website.entity.Category;
 
 /**
  * Data Access Object interface provides connection
- * between Category Objects in application and DB
+ * between {@code Category} Objects in application and DB
  * using JpaRepository to make main requests to DataBase
  * and JpaSpecificationExecutor  to allow execution of Specification
  * @author Pavel Kazarin
@@ -18,6 +18,11 @@ import ua.website.entity.Category;
  */
 public interface CategoryDao extends JpaRepository<Category, Integer>,JpaSpecificationExecutor<Category> {
 
+	/**
+	 * Finds {@code Category} by it's name
+	 * @param name name of {@code Category} you want to find
+	 * @return found {@code Category}
+	 */
 	Category findByName(String name);
 
 }

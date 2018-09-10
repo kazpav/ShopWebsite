@@ -8,6 +8,7 @@ import java.io.StringWriter;
 import java.util.Map;
 import java.util.Map.Entry;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -16,28 +17,54 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import org.springframework.data.domain.Page;
 
+/**
+ * This class builds Pageable tags
+ */
 public class PageableTag extends SimpleTagSupport{
 
+	/** Constant for first page */
 	private final static int FIRST = 1;
+
+	/** Constant for quantity of visible pages */
 	private final static int VISIBLE = 5;
+
+	/** Constant for '&' symbol*/
 	private final static String AMPER = "&";
+
+	/** Constant for '?' symbol*/
 	private final static String QUEST = "?";
+
+	/** Constant for '=' symbol*/
 	private final static String EQUAL = "=";
-	
+
+	/** {@code StringWirter} object for tag building */
 	private final StringWriter sw = new StringWriter();
-	
+
+	/** Last page */
 	private int last;
-	
+
+	/** Current page */
 	private int current;
-	
+
+	/** Pagination size */
 	private int size;
-	
+
+	/** Tag for building */
 	private String stContainer = "<tr>";
+
+	/** Tag for building */
 	private String endContainer = "</tr>";
+
+	/** Tag for building */
 	private String stCell = "<td>";
+
+	/** Tag for building */
 	private String endCell = "</td>";
+
+	/** Tag for building */
 	private String activeClass = "active";
-	
+
+	/** Tag builder */
 	@Override
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -64,7 +91,8 @@ public class PageableTag extends SimpleTagSupport{
 		sw.append(endContainer);
 		out.println(sw.toString());
 	}
-	
+
+	/** Last page builder */
 	private void buildLastPage(){
 		sw.append(stCell);
 		sw.append("<a href='");
@@ -80,7 +108,8 @@ public class PageableTag extends SimpleTagSupport{
 		sw.append("</a>");
 		sw.append(endCell);
 	}
-	
+
+	/** First page builder*/
 	private void buildFirstPage(){
 		sw.append(stCell);
 		sw.append("<a href='");
@@ -96,7 +125,8 @@ public class PageableTag extends SimpleTagSupport{
 		sw.append("</a>");
 		sw.append(endCell);
 	}
-	
+
+	/** Right arrow builder */
 	private void buildRightArrow(){
 		sw.append(stCell);
 		sw.append("<a href='");
@@ -113,7 +143,8 @@ public class PageableTag extends SimpleTagSupport{
 		sw.append("</a>");
 		sw.append(endCell);
 	}
-	
+
+	/** Left arrow builder */
 	private void buildLeftArrow(){
 		sw.append(stCell);
 		sw.append("<a href='");
@@ -130,7 +161,8 @@ public class PageableTag extends SimpleTagSupport{
 		sw.append("</a>");
 		sw.append(endCell);
 	}
-	
+
+	/** One cell builder*/
 	private void buildOneCell(int number){
 		if(number == current){
 			sw.append(stCell.substring(0, stCell.length()-1));
@@ -153,7 +185,8 @@ public class PageableTag extends SimpleTagSupport{
 		sw.append("</a>");
 		sw.append(endCell);
 	}
-	
+
+	/** Adding all parameters */
 	private void addAllParameters(){
 		PageContext pageContext = (PageContext) getJspContext();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
@@ -169,21 +202,22 @@ public class PageableTag extends SimpleTagSupport{
 			}
 		}
 	}
-	
+
+	/** Sets page */
 	public void setPage(Page<?> page) {
-		if(page==null) throw new IllegalArgumentException("В контроллері переіменуйте всі атрибути з значенням findAll() на page");
+		if(page==null) throw new IllegalArgumentException("Rename all findAll() attributes in Controller to page");
 		last = page.getTotalPages();
 		current = page.getNumber()+1;
 		size = page.getSize();
 	}
-	/**
-	 * <ul class=pagination></ul>*/
+
+	/** Sets container*/
 	public void setContainer(String container){
 		stContainer = container.substring(0, container.indexOf("<", 1));
 		endContainer = container.substring(container.indexOf("<", 1));
 	}
-	/**
-	 * <li></li>*/
+
+	/** Sets cell */
 	public void setCell(String cell){
 		stCell = cell.substring(0, cell.indexOf("<", 1));
 		endCell = cell.substring(cell.indexOf("<", 1));

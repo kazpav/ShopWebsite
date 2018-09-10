@@ -12,16 +12,35 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+/**
+ * This class builds size tags
+ * @author Pavel Kazarin
+ * @version 1.0
+ */
 public class SizeTag extends SimpleTagSupport {
 
+	/** {@code StringWriter} that will be used during tag building */
 	private final StringWriter sw = new StringWriter();
+
+	/** Constant for '&' symbol*/
 	private final static String AMPER = "&";
+
+	/** Constant for '?' symbol*/
 	private final static String QUEST = "?";
+
+	/** Constant for '=' symbol*/
 	private final static String EQUAL = "=";
+
+	/** Title */
 	private String title = "Size";
+
+	/** Size */
 	private int size;
+
+	/** Possible Sizes */
 	private int[] posibleSizes;
-	
+
+	/** Tag builder */
 	@Override
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -48,7 +67,8 @@ public class SizeTag extends SimpleTagSupport {
 		sw.append("</div>");
 		out.println(sw.toString());
 	}
-	
+
+	/** Adds all parameters */
 	private void addAllParameters(){
 		PageContext pageContext = (PageContext) getJspContext();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
@@ -65,10 +85,12 @@ public class SizeTag extends SimpleTagSupport {
 		}
 	}
 
+	/** Sets size */
 	public void setSize(int size) {
 		this.size = size;
 	}
-	
+
+	/** Sets posible sizes */
 	public void setPosibleSizes(String posibleSizes){
 		StringTokenizer tokenizer = new StringTokenizer(posibleSizes, ", ");
 		this.posibleSizes = new int[tokenizer.countTokens()];
@@ -78,7 +100,8 @@ public class SizeTag extends SimpleTagSupport {
 			i++;
 		}
 	}
-	
+
+	/** Sets titile */
 	public void setTitle(String title){
 		this.title = title;
 	}

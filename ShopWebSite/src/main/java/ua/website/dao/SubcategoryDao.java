@@ -13,7 +13,7 @@ import ua.website.entity.Subcategory;
 
 /**
  * Data Access Object interface provides connection
- * between Subcategory Objects in application and DB
+ * between {@code Subcategory} Objects in application and DB
  * using JpaRepository to make main requests to DataBase,
  *  JpaSpecificationExecutor  to allow execution of Specification
  *  and  queries
@@ -25,31 +25,31 @@ import ua.website.entity.Subcategory;
 public interface SubcategoryDao extends JpaRepository<Subcategory, Integer>,JpaSpecificationExecutor<Subcategory> {
 
 	/**
-	 * Finds all Subcategories in DataBase
+	 * Finds all {@code Subcategory}'s in DataBase
 	 * @return List of all Subcategories
 	 */
 	@Query("SELECT s FROM Subcategory s LEFT JOIN FETCH s.category")
 	List<Subcategory> findAll();
 
 	/**
-	 * Finds Subcategory with same id as parameter
-	 * @param id Subcategory's id you want to find
-	 * @return found Subcategory
+	 * Finds {@code Subcategory} with same id as parameter
+	 * @param id {@code Subcategory}'s id you want to find
+	 * @return found {@code Subcategory}
 	 */
 	@Query("SELECT s FROM Subcategory s LEFT JOIN FETCH s.category WHERE s.id=?1")
 	Subcategory findOne(int id);
 
 	/**
-	 * Finds Subcategory with the same name as String parameter
-	 * @param name name of Subcategory we are looking for
-	 * @return found Subcategory
+	 * Finds {@code Subcategory} with the same name as String parameter
+	 * @param name name of {@code Subcategory} we are looking for
+	 * @return found {@code Subcategory}
 	 */
 	Subcategory findByName(String name);
 
 	/**
-	 * Finds all Subcategories representing them in Page perspective
+	 * Finds all {@code Subcategory} representing them in Page perspective
 	 * @param pageable
-	 * @return pages of Subcategories
+	 * @return pages of {@code Subcategory}
 	 */
 	@Query(value="SELECT s FROM Subcategory s LEFT JOIN FETCH s.category",
 			countQuery="SELECT count(s.id)FROM Subcategory s")

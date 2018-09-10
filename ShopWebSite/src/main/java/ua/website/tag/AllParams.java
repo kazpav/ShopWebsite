@@ -12,13 +12,26 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+/**
+ * This class builds allParams tags
+ * @author Pavel Kazarin
+ * @version 1.0
+ */
 public class AllParams extends SimpleTagSupport{
 
+	/**{@StringWirter} object for tab built */
 	private final StringWriter sw = new StringWriter();
+
+	/** Constant for '&' symbol */
 	private final static String AMPER = "&";
+
+	/** Constant for '?' symbol */
 	private final static String QUEST = "?";
+
+	/** Constant for '=' symbol */
 	private final static String EQUAL = "=";
-	
+
+	/** Tag builder */
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();
